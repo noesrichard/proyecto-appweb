@@ -1,9 +1,15 @@
 <div class="page-background">
     <div class="login">
         <div class="login__header">
-            <h2>Inicie Sesion</h2>
+            <h2>Iniciar Sesión</h2>
         </div>
         <div class="login__body">
+            <div class="login__body-logo">
+                <img src="/assets/logo.png" width="100px" height="100px" />
+                <h4 class="login__body-logo-title">
+                    Gestor de Ingresos y Gastos
+                </h4>
+            </div>
             <div class="login__username-input">
                 <span class="p-float-label p-input-icon-right">
                     <input id="float-input" type="text" pInputText />
@@ -20,15 +26,18 @@
                         [feedback]="false"
                         [toggleMask]="true"
                     ></p-password>
-                    <label for="float-input">Contraseña</label>
+                    <label class="p-float-lable-passwd"for="float-input">Contraseña</label>
                 </span>
             </div>
             <button
                 pButton
                 class="login__btn p-button-success"
                 type="button"
-                label="Iniciar Sesion"
+                label="Iniciar Sesión"
             ></button>
+            <p class="login__signup-text">
+                Regístrate <a class="login__signup-link" href="#">aquí</a>
+            </p>
         </div>
     </div>
 </div>
