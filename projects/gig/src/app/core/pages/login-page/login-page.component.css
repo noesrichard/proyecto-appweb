@@ -33,8 +33,13 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
 }
 
 .login__body-logo {
+    border-radius:100px;
     height: 100px;
     padding-top: 20px;
+}
+
+.login__body-logo-img{ 
+    border-radius:100px;
 }
 
 .login__body-logo-title {
