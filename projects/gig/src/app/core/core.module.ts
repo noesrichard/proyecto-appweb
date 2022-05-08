@@ -8,10 +8,13 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
-import { MenuModule } from 'primeng/menu'; 
+import { MenuModule } from 'primeng/menu';
+import { PanelComponent } from './components/panel/panel.component';
+import { HomeComponent } from './components/home/home.component'; 
+import { CardModule } from 'primeng/card'; 
 
 @NgModule({
-    declarations: [LoginPageComponent, MainPageComponent, NavbarComponent],
+    declarations: [LoginPageComponent, MainPageComponent, NavbarComponent, PanelComponent, HomeComponent],
     imports: [
         CommonModule,
         ButtonModule,
@@ -20,6 +23,7 @@ import { MenuModule } from 'primeng/menu';
         TabMenuModule,
         OverlayPanelModule,
         MenuModule,
+        CardModule,
     ],
 })
 export class CoreModule {}
