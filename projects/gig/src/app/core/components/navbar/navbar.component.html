@@ -1,12 +1,6 @@
-<p-overlayPanel class="overlay-panel" #op [style]="{width: '450px'}">
-    <ng-template pTemplate>
-        <p> HOla has abierto el overlay Panel</p>
-    </ng-template>
-</p-overlayPanel>
-
 <div class="navbar-container">
     <div class="navbar">
-        <p-tabMenu class="navbar-options" [model]="items"></p-tabMenu>
+        <p-tabMenu class="navbar-options" [model]="navbarItems"></p-tabMenu>
     </div>
 
     <div class="user-bubble">
@@ -20,4 +14,9 @@
         ></button>
     </div>
 </div>
-
+<!--
+<p-overlayPanel class="p-overlaypanel p-overlaypanel-content" #op >
+    <p-menu [model]="menuItems"></p-menu>
+</p-overlayPanel>
+-->
+<p-menu #op [popup]="true"[model]="menuItems"></p-menu>

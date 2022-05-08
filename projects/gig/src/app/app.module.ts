@@ -8,6 +8,7 @@ import { CoreModule } from './core/core.module';
 import {ExpensesModule} from './expenses/expenses.module';
 import {IncomeModule} from './income/income.module';
 import {WishlistModule} from './wishlist/wishlist.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {WishlistModule} from './wishlist/wishlist.module';
     ExpensesModule,
     IncomeModule,
     WishlistModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

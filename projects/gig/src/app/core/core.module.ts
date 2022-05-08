@@ -7,10 +7,19 @@ import { PasswordModule } from 'primeng/password';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TabMenuModule } from 'primeng/tabmenu';
-import {OverlayPanelModule} from 'primeng/overlaypanel';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { MenuModule } from 'primeng/menu'; 
 
 @NgModule({
-  declarations: [LoginPageComponent, MainPageComponent, NavbarComponent],
-  imports: [CommonModule, ButtonModule, InputTextModule, PasswordModule, TabMenuModule, OverlayPanelModule]
+    declarations: [LoginPageComponent, MainPageComponent, NavbarComponent],
+    imports: [
+        CommonModule,
+        ButtonModule,
+        InputTextModule,
+        PasswordModule,
+        TabMenuModule,
+        OverlayPanelModule,
+        MenuModule,
+    ],
 })
 export class CoreModule {}

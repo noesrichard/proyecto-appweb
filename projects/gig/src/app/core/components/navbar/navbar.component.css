@@ -12,16 +12,18 @@
 }
 
 .p-button-rounded{ 
+    color: gray !important; 
     position: absolute;
     margin-top: 5px; 
     margin-left: 12%; 
     background-color: white !important;
 }
 
-.overlay-panel{ 
-    width: 100px;
-    height: 100px;
-    background-color: white;
+p-overlayPanel{ 
+    padding: 0 !important; 
+}
+.p-button-rounded:focus{ 
+    color: var(--primary-color-green) !important; 
 }
 
 
