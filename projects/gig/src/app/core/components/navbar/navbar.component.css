@@ -1,0 +1,27 @@
+.navbar-container{ 
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+.navbar{ 
+    display: flex; 
+    width: 60%;
+    background-color: white;
+    justify-content: space-around;
+    border-radius: 100px;
+}
+
+.p-button-rounded{ 
+    position: absolute;
+    margin-top: 5px; 
+    margin-left: 12%; 
+    background-color: white !important;
+}
+
+.overlay-panel{ 
+    width: 100px;
+    height: 100px;
+    background-color: white;
+}
+
+

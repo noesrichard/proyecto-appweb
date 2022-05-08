@@ -8,9 +8,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-        background: #0F2027;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: var(--background-color); /* fallback for old browsers */
+    background: var(--background-gradient-chrome);
+    background: var(--background-gradient-firefox);
 }
 
 .login {
@@ -33,13 +33,13 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
 }
 
 .login__body-logo {
-    border-radius:100px;
+    border-radius: 100px;
     height: 100px;
     padding-top: 20px;
 }
 
-.login__body-logo-img{ 
-    border-radius:100px;
+.login__body-logo-img {
+    border-radius: 100px;
 }
 
 .login__body-logo-title {
@@ -87,7 +87,7 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
 }
 
 .login__btn:hover {
-    border-color:var(--primary-color-blue) !important;
+    border-color: var(--primary-color-blue) !important;
     background-color: white !important;
     color: var(--primary-color-blue) !important;
 }

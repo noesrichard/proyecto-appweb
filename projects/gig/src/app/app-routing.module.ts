@@ -3,12 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import {AccountsPageComponent} from './accounts/pages/accounts-page/accounts-page.component';
 import {CategoriesPageComponent} from './categories/pages/categories-page/categories-page.component';
 import {LoginPageComponent} from './core/pages/login-page/login-page.component';
+import {MainPageComponent} from './core/pages/main-page/main-page.component';
 import {ExpensesPageComponent} from './expenses/pages/expenses-page/expenses-page.component';
 import {IncomePageComponent} from './income/pages/income-page/income-page.component';
 import {WishlistPageComponent} from './wishlist/pages/wishlist-page/wishlist-page.component';
 
 const routes: Routes = [
     {path: '', component: LoginPageComponent},
+    {path: 'home', component: MainPageComponent},
     {path: 'accounts', component: AccountsPageComponent},
     {path: 'categories', component: CategoriesPageComponent},
     {path: 'expenses', component: ExpensesPageComponent},

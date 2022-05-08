@@ -1,0 +1,23 @@
+<p-overlayPanel class="overlay-panel" #op [style]="{width: '450px'}">
+    <ng-template pTemplate>
+        <p> HOla has abierto el overlay Panel</p>
+    </ng-template>
+</p-overlayPanel>
+
+<div class="navbar-container">
+    <div class="navbar">
+        <p-tabMenu class="navbar-options" [model]="items"></p-tabMenu>
+    </div>
+
+    <div class="user-bubble">
+        <button
+            class="p-button-rounded p-button-success p-button-text"
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-user"
+            (click)="op.toggle($event)"
+        ></button>
+    </div>
+</div>
+
