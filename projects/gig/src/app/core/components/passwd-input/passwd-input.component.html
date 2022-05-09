@@ -1,0 +1,18 @@
+<span class="p-float-label p-input-icon-right">
+    <i
+        [ngClass]="icon"
+        styleClass="icon"
+        (click)="changeShowPassword()"></i>
+    <input
+        id="float-input"
+        type="text"
+        pPassword
+        [feedback]="false"
+        [weakLabel]="weak"
+        [mediumLabel]="medium"
+        [strongLabel]="strong"
+        [promptLabel]="passwordPrompt"
+        [showPassword]="showPassword"
+    />
+    <label for="float-input">Contraseña</label>
+</span>

@@ -11,10 +11,13 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { MenuModule } from 'primeng/menu';
 import { PanelComponent } from './components/panel/panel.component';
 import { HomeComponent } from './components/home/home.component'; 
-import { CardModule } from 'primeng/card'; 
+import { CardModule } from 'primeng/card';
+import { SignupPageComponent } from './pages/signup-page/signup-page.component';
+import { PasswdInputComponent } from './components/passwd-input/passwd-input.component';
+import { UserInputComponent } from './components/user-input/user-input.component';
 
 @NgModule({
-    declarations: [LoginPageComponent, MainPageComponent, NavbarComponent, PanelComponent, HomeComponent],
+    declarations: [LoginPageComponent, MainPageComponent, NavbarComponent, PanelComponent, HomeComponent, SignupPageComponent, PasswdInputComponent, UserInputComponent, ],
     imports: [
         CommonModule,
         ButtonModule,

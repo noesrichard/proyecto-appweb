@@ -1,0 +1,7 @@
+:host ::ng-deep .pi,.pi-eye:hover{ 
+    cursor: pointer;
+}
+
+:host ::ng-depp .p-password-panel,.p-password-meter{ 
+    background-color: blue;
+}
