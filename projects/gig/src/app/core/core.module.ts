@@ -12,12 +12,14 @@ import { MenuModule } from 'primeng/menu';
 import { PanelComponent } from './components/panel/panel.component';
 import { HomeComponent } from './components/home/home.component'; 
 import { CardModule } from 'primeng/card';
-import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { PasswdInputComponent } from './components/passwd-input/passwd-input.component';
 import { UserInputComponent } from './components/user-input/user-input.component';
+import { TabViewModule } from 'primeng/tabview';
+import { LoginFormComponent } from './components/login-form/login-form.component';
+import { SignupFormComponent } from './components/signup-form/signup-form.component'; 
 
 @NgModule({
-    declarations: [LoginPageComponent, MainPageComponent, NavbarComponent, PanelComponent, HomeComponent, SignupPageComponent, PasswdInputComponent, UserInputComponent, ],
+    declarations: [LoginPageComponent, MainPageComponent, NavbarComponent, PanelComponent, HomeComponent,  PasswdInputComponent, UserInputComponent, LoginFormComponent, SignupFormComponent, ],
     imports: [
         CommonModule,
         ButtonModule,
@@ -27,6 +29,7 @@ import { UserInputComponent } from './components/user-input/user-input.component
         OverlayPanelModule,
         MenuModule,
         CardModule,
+        TabViewModule,
     ],
 })
 export class CoreModule {}
