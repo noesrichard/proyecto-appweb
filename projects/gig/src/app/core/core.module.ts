@@ -15,9 +15,12 @@ import { CardModule } from 'primeng/card';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { PasswdInputComponent } from './components/passwd-input/passwd-input.component';
 import { UserInputComponent } from './components/user-input/user-input.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { LoginComponent } from './components/login/login.component';
+import { LogoComponent } from './components/logo/logo.component';
 
 @NgModule({
-    declarations: [LoginPageComponent, MainPageComponent, NavbarComponent, PanelComponent, HomeComponent, SignupPageComponent, PasswdInputComponent, UserInputComponent, ],
+    declarations: [LoginPageComponent, MainPageComponent, NavbarComponent, PanelComponent, HomeComponent, SignupPageComponent, PasswdInputComponent, UserInputComponent,  SignupComponent, LoginComponent, LogoComponent, ],
     imports: [
         CommonModule,
         ButtonModule,
