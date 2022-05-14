@@ -4,7 +4,7 @@
         styleClass="icon"
         (click)="changeShowPassword()"></i>
     <input
-        id="float-input"
+        id="passwd-input"
         type="text"
         pPassword
         [feedback]="false"
@@ -13,6 +13,7 @@
         [strongLabel]="strong"
         [promptLabel]="passwordPrompt"
         [showPassword]="showPassword"
+        #passwdInput
     />
-    <label for="float-input">Contraseña</label>
+    <label for="passwd-input">Contraseña</label>
 </span>

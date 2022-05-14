@@ -7,11 +7,11 @@ import { PrimeNGConfig } from 'primeng/api';
     styleUrls: ['./passwd-input.component.css'],
 })
 export class PasswdInputComponent implements OnInit {
-    weak= 'Fácil';
-    medium= 'Media';
-    strong= 'Difícil';
+    weak = 'Fácil';
+    medium = 'Media';
+    strong = 'Difícil';
     icon = 'pi pi-eye';
-    passwordPrompt= 'Ingrese una contraseña';
+    passwordPrompt = 'Ingrese una contraseña';
     showPassword = false;
     constructor(private primengConfig: PrimeNGConfig) {}
 
@@ -25,10 +25,11 @@ export class PasswdInputComponent implements OnInit {
 
     changeShowPassword() {
         this.showPassword = !this.showPassword;
-        if(this.showPassword == true){ 
-            this.icon = "pi pi-eye-slash"; 
-        }else{ 
-            this.icon = "pi pi-eye"; 
+        if (this.showPassword == true) {
+            this.icon = 'pi pi-eye-slash';
+        } else {
+            this.icon = 'pi pi-eye';
         }
+        
     }
 }
