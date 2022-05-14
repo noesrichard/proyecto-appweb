@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 
 @Component({
@@ -6,15 +6,18 @@ import { MenuItem } from 'primeng/api';
     templateUrl: './panel.component.html',
     styleUrls: ['./panel.component.css'],
 })
-export class PanelComponent implements OnInit {
+export class PanelComponent implements OnInit, OnChanges{
     @Input() fullSize: boolean = false;
+
     @Output() onExitFullSize: EventEmitter<boolean> =
         new EventEmitter<boolean>();
 
-    exitFullSize: boolean = false;
+    panelStyle: string = "panel"; 
+
     menuItems: MenuItem[] = [];
 
-    constructor() {}
+    constructor() {
+    }
 
     ngOnInit(): void {
         this.menuItems = [
@@ -23,11 +26,19 @@ export class PanelComponent implements OnInit {
                 label: 'Salir',
                 icon: 'pi pi-fw pi-sign-out',
                 command: () => {
-                    this.exitFullSize = !this.exitFullSize;
-                    this.onExitFullSize.emit(this.exitFullSize);
+                    this.fullSize = !this.fullSize;
+                    this.onExitFullSize.emit(this.fullSize);
                 },
             },
         ];
+    }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        if(changes['fullSize'].currentValue){
+            this.panelStyle = "panel full-size";
+        }else{ 
+            this.panelStyle = "panel"; 
+        }
     }
 
 }

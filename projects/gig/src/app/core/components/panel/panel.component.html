@@ -1,8 +1,7 @@
-<div class="panel-wrapper flex center">
-    <div class="panel">
+<div class="flex center">
+    <div [ngClass]="panelStyle">
         <div class="button-container">
-            <button
-                *ngIf="fullSize"
+            <button *ngIf="fullSize"
                 class="p-button-rounded-arrow p-button-rounded p-button-success p-button-text"
                 pButton
                 pRipple
