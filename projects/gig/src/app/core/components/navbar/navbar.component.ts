@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 
 @Component({
@@ -7,6 +7,9 @@ import { MenuItem } from 'primeng/api';
     styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
+
+    @Output() onExpandedNavbar: EventEmitter<boolean> = new EventEmitter<boolean>(); 
+    expanded: boolean = true; 
     navbarItems: MenuItem[] = []; 
     menuItems: MenuItem[] = []
     constructor() {}
@@ -24,5 +27,10 @@ export class NavbarComponent implements OnInit {
             { label: 'Configuración', icon: 'pi pi-fw pi-cog' },
             { label: 'Salir', icon: 'pi pi-fw pi-sign-out' }
         ]
+    }
+
+    expandNavbar(){ 
+        this.expanded = !this.expanded; 
+        this.onExpandedNavbar.emit(this.expanded);
     }
 }

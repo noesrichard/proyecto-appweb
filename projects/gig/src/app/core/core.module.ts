@@ -9,7 +9,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { MenuModule } from 'primeng/menu';
-import { PanelComponent } from './components/panel/panel.component';
 import { HomeComponent } from './components/home/home.component';
 import { CardModule } from 'primeng/card';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
@@ -18,13 +17,13 @@ import { UserInputComponent } from './components/user-input/user-input.component
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { LogoComponent } from './components/logo/logo.component';
+import { PanelComponent } from './components/panel/panel.component';
 
 @NgModule({
     declarations: [
         LoginPageComponent,
         MainPageComponent,
         NavbarComponent,
-        PanelComponent,
         HomeComponent,
         SignupPageComponent,
         PasswdInputComponent,
@@ -32,6 +31,7 @@ import { LogoComponent } from './components/logo/logo.component';
         SignupComponent,
         LoginComponent,
         LogoComponent,
+        PanelComponent,
     ],
     imports: [
         CommonModule,

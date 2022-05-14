@@ -1,4 +1,4 @@
-<div class="navbar-container">
+<div class="navbar-container" *ngIf="expanded">
     <div class="navbar">
         <p-tabMenu class="navbar-options" [model]="navbarItems"></p-tabMenu>
     </div>
@@ -12,11 +12,16 @@
             icon="pi pi-user"
             (click)="op.toggle($event)"
         ></button>
+        <p-menu #op [popup]="true" [model]="menuItems"></p-menu>
+    </div>
+    <div class="">
+        <button
+            class="p-button-rounded-arrow p-button-rounded p-button-success p-button-text"
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-window-maximize"
+            (click)="expandNavbar()"
+        ></button>
     </div>
 </div>
-<!--
-<p-overlayPanel class="p-overlaypanel p-overlaypanel-content" #op >
-    <p-menu [model]="menuItems"></p-menu>
-</p-overlayPanel>
--->
-<p-menu #op [popup]="true"[model]="menuItems"></p-menu>

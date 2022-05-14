@@ -19,9 +19,14 @@
     background-color: white !important;
 }
 
+.p-button-rounded-arrow{ 
+    margin-left: 16%; 
+}
+
 p-overlayPanel{ 
     padding: 0 !important; 
 }
+
 .p-button-rounded:focus{ 
     color: var(--primary-color-green) !important; 
 }
