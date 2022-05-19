@@ -1,5 +1,5 @@
 :host ::ng-deep .p-button-rounded, .p-button-success ,.p-button-text{ 
-    color: var(--text-color-grey) !important;
+    color:  #14B8A6 !important;
 }
 
 :host ::ng-deep .pi-user{ 

@@ -1,0 +1,14 @@
+:host ::ng-deep .donut{ 
+    padding: 20px;
+}
+:host ::ng-deep .bar{ 
+    width: 100vh;
+    padding: 20px;
+}
+
+.balance{ 
+    width: 95vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

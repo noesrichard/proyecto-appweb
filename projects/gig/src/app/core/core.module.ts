@@ -4,7 +4,6 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
-import { MainPageComponent } from './pages/main-page/main-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
@@ -21,11 +20,11 @@ import { PanelComponent } from './components/panel/panel.component';
 import { SidebarModule } from 'primeng/sidebar';
 import { UserBubbleComponent } from './components/user-bubble/user-bubble.component'; 
 import {TieredMenuModule} from 'primeng/tieredmenu';
+import {AppRoutingModule} from '../app-routing.module';
 
 @NgModule({
     declarations: [
         LoginPageComponent,
-        MainPageComponent,
         NavbarComponent,
         HomeComponent,
         SignupPageComponent,
@@ -49,5 +48,8 @@ import {TieredMenuModule} from 'primeng/tieredmenu';
         SidebarModule,
         TieredMenuModule,
     ],
+    exports: [
+        NavbarComponent
+    ]
 })
 export class CoreModule {}

@@ -1,0 +1,9 @@
+@import "primeflex/primeflex.css";
+p-tabView{ 
+    width: 100%;
+}
+
+gig-stat-card{ 
+    width: 10vw;
+}
+
