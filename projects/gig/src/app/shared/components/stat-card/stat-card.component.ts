@@ -4,6 +4,7 @@ export interface Info{
     title: string, 
     icon: string, 
     value: number,
+    percentage: number,
     description: string
 }
 
@@ -18,6 +19,7 @@ export class StatCardComponent implements OnInit {
         title: 'Ahorro JEP', 
         icon: 'pi pi-credit-card', 
         value: 128.0,
+        percentage: 12,
         description: 'Tarjeta de credito'
     };
 

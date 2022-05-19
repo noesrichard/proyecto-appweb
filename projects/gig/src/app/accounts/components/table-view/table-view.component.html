@@ -4,8 +4,11 @@
             <gig-table [columns]="columns" [data]="data"></gig-table>
         </p-tabPanel>
         <p-tabPanel header="Informacion">
-            <gig-stat-card [info]="info"></gig-stat-card>
-            <gig-stat-card [info]="info2"></gig-stat-card>
+            <div class="card-container">
+                <gig-stat-card [info]="info"></gig-stat-card>
+                <gig-stat-card [info]="info2"></gig-stat-card>
+                <gig-stat-card [info]="info3"></gig-stat-card>
+            </div>
         </p-tabPanel>
     </p-tabView>
 </gig-container>

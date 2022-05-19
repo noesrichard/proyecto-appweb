@@ -12,15 +12,24 @@ export class TableViewComponent implements OnInit {
         title: 'Pichincha Credito',
         icon: 'pi pi-credit-card',
         value: 100,
+        percentage: 15,
         description: 'Tarjeta de credito',
     };
     info2: Info = {
         title: 'JEP Ahorro',
         icon: 'pi pi-credit-card',
         value: 10,
+        percentage: 10,
         description: 'Tarjeta de debito',
     };
 
+    info3: Info = {
+        title: 'Efectivo',
+        icon: 'pi pi-dollar',
+        value: 80,
+        percentage: 60, 
+        description: 'Billetera, efectivo',
+    };
     header: string = 'Vista de Tabla';
 
     data: any[] = [

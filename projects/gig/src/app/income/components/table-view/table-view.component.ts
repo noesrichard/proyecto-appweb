@@ -13,12 +13,14 @@ export class TableViewComponent implements OnInit {
             description: 'Sueldo',
             date: '20/06/2022',
             total: '$18.5',
+            account: 'JEP'
         },
         {
             type: 'Unico',
             description: 'Deuda',
             date: '20/06/2022',
             total: '$10.5',
+            account: 'JEP'
         },
     ];
 
@@ -27,6 +29,7 @@ export class TableViewComponent implements OnInit {
         { field: 'description', header: 'Descripcion' },
         { field: 'date', header: 'Fecha' },
         { field: 'total', header: 'Ingreso Total' },
+        { field: 'account', header: 'Cuenta' }
     ];
     constructor() {}
 
