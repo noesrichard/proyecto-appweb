@@ -1,7 +1,3 @@
-<div class="page-background">
-    <div class="navbar">
-        <gig-navbar *ngIf="fullSizePanel==false" (onExpandedNavbar)="makePanelFullSize($event)"></gig-navbar>
-    </div>
-    <gig-panel [fullSize]="fullSizePanel" (onExitFullSize)="exitFullSize($event)">
-    </gig-panel>
+<div class="background flex">
+    <gig-navbar></gig-navbar>
 </div>

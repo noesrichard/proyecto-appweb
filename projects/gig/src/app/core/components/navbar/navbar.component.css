@@ -1,7 +1,14 @@
 .navbar-container{ 
-    padding-top: 10px;
+    height: 100vh;
+    background-color: white;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction:column;
+}
+
+.user-bubble{ 
+    padding-top: 20px;
+    padding-bottom: 10px;
 }
 .navbar{ 
     display: flex; 
@@ -11,24 +18,23 @@
     border-radius: 100px;
 }
 
-.p-button-rounded{ 
-    color: gray !important; 
-    position: absolute;
-    margin-top: 5px; 
-    margin-left: 12%; 
-    background-color: white !important;
+:host ::ng-deep .p-tabmenu-nav{ 
+    flex-direction: column;
 }
 
-.p-button-rounded-arrow{ 
-    margin-left: 16%; 
+:host ::ng-deep .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link{ 
+    background: white;
+    border: none;
+
 }
 
-p-overlayPanel{ 
-    padding: 0 !important; 
-}
+:host ::ng-deep .p-tabmenu-nav a{ 
+    border: none;
+    flex-direction: column;
+} 
 
-.p-button-rounded:focus{ 
-    color: var(--primary-color-green) !important; 
+:host ::ng-deep .pi{ 
+    padding-bottom: 10px;
 }
 
 

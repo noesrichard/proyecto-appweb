@@ -1,27 +1,8 @@
-<div class="navbar-container" *ngIf="expanded">
-    <div class="navbar">
-        <p-tabMenu class="navbar-options" [model]="navbarItems"></p-tabMenu>
+<div class="navbar-container">
+    <div class="user-bubble"> 
+        <gig-user-bubble></gig-user-bubble>
     </div>
-
-    <div class="user-bubble">
-        <button
-            class="p-button-rounded p-button-success p-button-text"
-            pButton
-            pRipple
-            type="button"
-            icon="pi pi-user"
-            (click)="op.toggle($event)"
-        ></button>
-        <p-menu #op [popup]="true" [model]="menuItems"></p-menu>
-    </div>
-    <div class="">
-        <button
-            class="p-button-rounded-arrow p-button-rounded p-button-success p-button-text"
-            pButton
-            pRipple
-            type="button"
-            icon="pi pi-window-maximize"
-            (click)="expandNavbar()"
-        ></button>
+    <div class="navbar ">
+        <p-tabMenu styleClass="navbar" [model]="navbarItems"></p-tabMenu>
     </div>
 </div>

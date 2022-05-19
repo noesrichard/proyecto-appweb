@@ -18,6 +18,9 @@ import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { PanelComponent } from './components/panel/panel.component';
+import { SidebarModule } from 'primeng/sidebar';
+import { UserBubbleComponent } from './components/user-bubble/user-bubble.component'; 
+import {TieredMenuModule} from 'primeng/tieredmenu';
 
 @NgModule({
     declarations: [
@@ -32,6 +35,7 @@ import { PanelComponent } from './components/panel/panel.component';
         LoginComponent,
         LogoComponent,
         PanelComponent,
+        UserBubbleComponent,
     ],
     imports: [
         CommonModule,
@@ -42,6 +46,8 @@ import { PanelComponent } from './components/panel/panel.component';
         OverlayPanelModule,
         MenuModule,
         CardModule,
+        SidebarModule,
+        TieredMenuModule,
     ],
 })
 export class CoreModule {}

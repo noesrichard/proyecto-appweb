@@ -1,16 +1,3 @@
-<div class="flex center">
-    <div [ngClass]="panelStyle">
-        <div class="button-container">
-            <button *ngIf="fullSize"
-                class="p-button-rounded-arrow p-button-rounded p-button-success p-button-text"
-                pButton
-                pRipple
-                type="button"
-                icon="pi pi-bars"
-                (click)="op.toggle($event)"
-            ></button>
-        </div>
-        <p-menu #op [popup]="true" [model]="menuItems"></p-menu>
-        <ng-content></ng-content>
-    </div>
+<div class="panel"> 
+    hola
 </div>
