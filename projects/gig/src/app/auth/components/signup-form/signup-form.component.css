@@ -1,0 +1,90 @@
+@import "~primeicons/primeicons.css";
+* {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login {
+    background-color: white;
+    width: 500px;
+    border-radius: 1rem;
+    text-align: center;
+    padding-bottom: 20px;
+    box-shadow: 19px 19px 56px 9px rgba(0, 0, 0, 0.85);
+    -webkit-box-shadow: 19px 19px 56px 9px rgba(0, 0, 0, 0.85);
+    -moz-box-shadow: 19px 19px 56px 9px rgba(0, 0, 0, 0.85);
+}
+
+.login h2 {
+    color: white;
+}
+
+.login__header {
+    border-radius: 1rem 1rem 0 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background: var(--primary-color-green); /* fallback for old browsers */
+}
+
+.login__body-logo {
+    height: 100px;
+    padding-top: 20px;
+}
+
+.login__body-logo-title {
+    font-family: sans-serif;
+    font-weight: 300;
+    color: #696969;
+    margin-top: 10px;
+}
+
+.login__username-input {
+    margin: 80px 20px 30px 20px;
+}
+
+.login__passwd-input {
+    margin: 30px 20px 30px 20px;
+}
+
+.login__btn {
+    background-color: var(--primary-color-green);
+    color: white;
+    border-color: var(--primary-color-green);
+    margin-bottom: 10px;
+}
+
+.login__signup-text {
+    margin-top: 10px;
+    font-family: sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    color: #696969;
+}
+
+.login__signup-link {
+    font-weight: 500;
+    text-decoration: underline;
+    color: #696969;
+}
+
+.p-float-lable-passwd {
+    margin-left: 100px;
+}
+
+.login__form {
+    margin-top: 60px;
+    background-color: orange;
+}
+
+.login__signup-link:hover {
+    cursor: pointer;
+}
+
+.login__btn:hover {
+    border-color: var(--primary-color-blue) !important;
+    background-color: white !important;
+    color: var(--primary-color-blue) !important;
+}
+
+:host ::ng-deep .password-input {
+    background-color: blue;
+}

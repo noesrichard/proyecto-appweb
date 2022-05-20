@@ -1,15 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { WishlistPageComponent } from './pages/wishlist-page/wishlist-page.component';
 
+import { WishlistRoutingModule } from './wishlist-routing.module';
+import { TableViewComponent } from './components/table-view/table-view.component';
+import {SharedModule} from '../shared/shared.module';
+import {TabViewModule} from 'primeng/tabview';
 
 
 @NgModule({
   declarations: [
-    WishlistPageComponent
+    TableViewComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    WishlistRoutingModule,
+    SharedModule,
+    TabViewModule,
   ]
 })
 export class WishlistModule { }

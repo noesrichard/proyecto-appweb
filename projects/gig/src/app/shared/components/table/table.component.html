@@ -1,0 +1,21 @@
+<p-table [value]="data">
+    <ng-template pTemplate="header">
+        <tr>
+            <th *ngFor="let column of columns">
+                {{column.header}}
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-data>
+        <tr>
+            <td *ngFor="let column of columns" >
+                <span *ngIf="column.type == stringData">
+                    {{data[column.field]}}
+                </span>
+                <span *ngIf="column.type == moneyData">
+                    ${{data[column.field]}}
+                </span>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

@@ -1,0 +1,40 @@
+.navbar-container{ 
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    flex-direction:column;
+}
+
+.user-bubble{ 
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+.navbar{ 
+    display: flex; 
+    width: 60%;
+    background-color: white;
+    justify-content: space-around;
+    border-radius: 100px;
+}
+
+:host ::ng-deep .p-tabmenu-nav{ 
+    flex-direction: column;
+}
+
+:host ::ng-deep .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link{ 
+    background: white;
+    border: none;
+
+}
+
+:host ::ng-deep .p-tabmenu-nav a{ 
+    border: none;
+    flex-direction: column;
+} 
+
+:host ::ng-deep .pi{ 
+    padding-bottom: 10px;
+}
+
+

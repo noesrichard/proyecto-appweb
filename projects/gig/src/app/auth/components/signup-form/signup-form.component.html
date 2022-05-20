@@ -1,0 +1,37 @@
+<div class="login">
+    <div class="login__header">
+        <h2>Registrarse</h2>
+    </div>
+    <div class="login__body">
+        <div class="login__body-logo">
+            <gig-logo></gig-logo>
+            <h4 class="login__body-logo-title">
+                Gestor de Ingresos y Gastos Personal
+            </h4>
+        </div>
+        <div class="login__username-input">
+            <gig-user-input></gig-user-input>
+        </div>
+
+        <div class="login__passwd-input">
+            <gig-passwd-input></gig-passwd-input>
+        </div>
+
+        <div class="login__passwd-input">
+            <span class="p-float-label p-input-icon-right">
+                <input pInputText id="float-input" type="password" />
+                <label for="float-input">Repita la contraseña</label>
+            </span>
+        </div>
+        <button
+            pButton
+            class="login__btn p-button-success"
+            type="button"
+            label="Regístrate"
+        ></button>
+        <p class="login__signup-text">
+            Inicia sesión
+            <a class="login__signup-link" [routerLink]="'/login'">aquí</a>
+        </p>
+    </div>
+</div>

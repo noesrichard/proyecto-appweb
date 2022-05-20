@@ -1,0 +1,11 @@
+<div class="user-bubble">
+    <button
+        class="p-button-rounded p-button-success p-button-text"
+        pButton
+        pRipple
+        type="button"
+        icon="pi pi-user"
+        (click)="op.toggle($event)"
+    ></button>
+    <p-menu #op [popup]="true" [model]="menuItems"></p-menu>
+</div>

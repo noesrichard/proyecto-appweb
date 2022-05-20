@@ -1,0 +1,8 @@
+
+.container{ 
+    box-sizing: border-box;
+    width: 92.2vw;
+    height: 100vh;
+    display: flex;
+    padding: 40px;
+}
