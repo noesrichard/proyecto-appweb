@@ -5,7 +5,6 @@ import { CategoriesRoutingModule } from './categories-routing.module';
 import { TableViewComponent } from './components/table-view/table-view.component';
 import {SharedModule} from '../shared/shared.module';
 import {TabViewModule} from 'primeng/tabview';
-import {CoreModule} from '../core/core.module';
 
 
 
@@ -19,7 +18,6 @@ import {CoreModule} from '../core/core.module';
     CategoriesRoutingModule,
     SharedModule,
     TabViewModule,
-    CoreModule
   ]
 })
 export class CategoriesModule { }

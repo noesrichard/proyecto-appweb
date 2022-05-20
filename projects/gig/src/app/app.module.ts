@@ -4,24 +4,29 @@ import { AccountsModule } from './accounts/accounts.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CategoriesModule } from './categories/categories.module';
-import { CoreModule } from './core/core.module';
 import { ExpensesModule } from './expenses/expenses.module';
 import { IncomeModule } from './income/income.module';
 import { WishlistModule } from './wishlist/wishlist.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './shared/shared.module';
+import { AuthModule } from './auth/auth.module';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
     declarations: [AppComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
-        CoreModule,
+        BrowserAnimationsModule,
+        HomeModule,
         AccountsModule,
+        AuthModule,
         CategoriesModule,
         ExpensesModule,
         IncomeModule,
         WishlistModule,
-        BrowserAnimationsModule,
+
+        SharedModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

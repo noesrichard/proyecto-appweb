@@ -1,9 +1,0 @@
-@import 'primeflex/primeflex.css';
-
-span, div{ 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.surface-ground{ 
-    border-radius: 1rem 1rem 0 0;
-}
