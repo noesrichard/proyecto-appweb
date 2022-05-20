@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountsService } from '../../../services/accounts/accounts.service';
+import { Account, tableHeaders } from '../../../services/accounts/account';
+import { Column } from '../../../services/shared/column';
 import { Info } from '../../../shared/components/stat-card/stat-card.component';
-import { Column } from '../../../shared/components/table/table.component';
 
 @Component({
     selector: 'gig-table-view',
@@ -8,6 +10,9 @@ import { Column } from '../../../shared/components/table/table.component';
     styleUrls: ['./table-view.component.css'],
 })
 export class TableViewComponent implements OnInit {
+    accounts: Account[];
+    tableHeaders: Column[];
+
     info: Info = {
         title: 'Pichincha Credito',
         icon: 'pi pi-credit-card',
@@ -27,40 +32,15 @@ export class TableViewComponent implements OnInit {
         title: 'Efectivo',
         icon: 'pi pi-dollar',
         value: 80,
-        percentage: 60, 
+        percentage: 60,
         description: 'Billetera, efectivo',
     };
     header: string = 'Vista de Tabla';
 
-    data: any[] = [
-        {
-            type: 'Credito',
-            name: 'Pichincha Credito',
-            description: 'Usada para compras generales',
-            expense: '$100',
-        },
-        {
-            type: 'Ahorro',
-            name: 'JEP Ahorro',
-            description: 'Usada para ahorrar',
-            expense: '$10',
-        },
-        {
-            type: 'Efectivo',
-            name: 'Efectivo',
-            description: 'Usada para compras en efectivo',
-            expense: '$80',
-        },
-    ];
-
-    columns: Column[] = [
-        { field: 'type', header: 'Tipo' },
-        { field: 'name', header: 'Nombre' },
-        { field: 'description', header: 'Descripcion' },
-        { field: 'expense', header: 'Gasto Total' },
-    ];
-
-    constructor() {}
+    constructor(private accountService: AccountsService) {
+        this.accounts = this.accountService.getAccounts();
+        this.tableHeaders = tableHeaders;
+    }
 
     ngOnInit(): void {}
 }

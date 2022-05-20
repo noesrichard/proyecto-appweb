@@ -1,9 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Column } from '../../../services/shared/column';
 
-export interface Column{ 
-    field: string, 
-    header: string
-}
 
 @Component({
     selector: 'gig-table',

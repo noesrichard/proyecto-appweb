@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Column } from '../../../shared/components/table/table.component';
+import { Column } from '../../../services/shared/column';
 
 @Component({
     selector: 'gig-table-view',
