@@ -10,8 +10,6 @@ import { TabpanelComponent } from './components/tabpanel/tabpanel.component';
 import { StatCardComponent } from './components/stat-card/stat-card.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { PasswdInputComponent } from './components/passwd-input/passwd-input.component';
-import { UserInputComponent } from './components/user-input/user-input.component';
 import { UserBubbleComponent } from './components/user-bubble/user-bubble.component';
 
 //Imports de PrimeNG
@@ -37,7 +35,6 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { MessageService } from 'primeng/api';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { MenuModule } from 'primeng/menu';
-import { PasswordModule } from 'primeng/password';
 import { TabMenuModule } from 'primeng/tabmenu';
 
 @NgModule({
@@ -45,20 +42,17 @@ import { TabMenuModule } from 'primeng/tabmenu';
         ContainerComponent,
         LogoComponent,
         NavbarComponent,
-        PasswdInputComponent,
         StatCardComponent,
         TabComponent,
         TableComponent,
         TabpanelComponent,
         UserBubbleComponent,
-        UserInputComponent,
     ],
     imports: [
         CommonModule,
 
         TabMenuModule,
         MenuModule,
-        PasswordModule,
         TableModule,
         CalendarModule,
         SliderModule,
@@ -88,8 +82,6 @@ import { TabMenuModule } from 'primeng/tabmenu';
         TableComponent,
         TabpanelComponent,
         UserBubbleComponent,
-        UserInputComponent,
-        PasswdInputComponent,
     ],
     providers: [MessageService, ConfirmationService],
 })
