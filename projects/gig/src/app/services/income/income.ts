@@ -4,29 +4,33 @@ import { ColumnType } from '../shared/columntypes';
 
 export const tableHeaders: Column[] = [
     { field: 'type', header: 'Tipo' , type: ColumnType.String},
-    { field: 'name', header: 'Nombre' , type: ColumnType.String},
     { field: 'description', header: 'Descripcion' , type: ColumnType.String},
-    { field: 'expense', header: 'Gasto Total' , type: ColumnType.Money},
+    { field: 'date', header: 'Fecha' , type: ColumnType.String},
+    { field: 'account', header: 'Cuenta' , type: ColumnType.String},
+    { field: 'total', header: 'Ingreso Total' , type: ColumnType.Money},
 ];
 
-export class Account implements TableData {
+export class Income implements TableData {
     id: number;
     type: string;
-    name: string;
     description: string;
-    expense: number;
+    date: Date;
+    account: string;
+    total: number;
 
     constructor(
         id: number,
         type: string,
-        name: string,
         description: string,
-        expense: number
+        date: Date,
+        account: string,
+        total: number
     ) {
         this.id = id;
-        this.type = type;
-        this.name = name;
         this.description = description;
-        this.expense = expense;
+        this.type = type;
+        this.date = date;
+        this.account = account;
+        this.total = total;
     }
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Column } from '../../../services/shared/column';
+import {Wish, tableHeaders} from '../../../services/wishlist/wish';
+import {WishlistService} from '../../../services/wishlist/wishlist.service';
 
 @Component({
   selector: 'gig-table-view',
@@ -8,30 +10,15 @@ import { Column } from '../../../services/shared/column';
 })
 export class TableViewComponent implements OnInit {
 
-    data: any[] = [
-        {
-            description: 'Camiseta Nike',
-            category: 'Ropa',
-            total: '$30',
-        },
-        {
-            description: 'Boleto a Santa Rosa',
-            category: 'Transporte',
-            total: '$10.5',
-        },
-        {
-            description: 'Pollo KFC',
-            category: 'Comida',
-            total: '$6.50',
-        },
-    ];
+    data: Wish[];
 
-    columns: Column[] = [
-        { field: 'description', header: 'Descripcion' },
-        { field: 'category', header: 'Categoria' },
-        { field: 'total', header: 'Precio' },
-    ];
-    constructor() {}
+    columns: Column[];     
+
+
+    constructor(private wishlistService: WishlistService) {
+        this.data = wishlistService.getWishList();
+        this.columns = tableHeaders; 
+    }
 
     ngOnInit(): void {}
 }

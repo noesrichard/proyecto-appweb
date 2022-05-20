@@ -8,8 +8,13 @@
     </ng-template>
     <ng-template pTemplate="body" let-data>
         <tr>
-            <td *ngFor="let column of columns">
+            <td *ngFor="let column of columns" >
+                <span *ngIf="column.type == stringData">
                     {{data[column.field]}}
+                </span>
+                <span *ngIf="column.type == moneyData">
+                    ${{data[column.field]}}
+                </span>
             </td>
         </tr>
     </ng-template>

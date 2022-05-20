@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Income, tableHeaders } from '../../../services/income/income';
+import { IncomeService } from '../../../services/income/income.service';
 import { Column } from '../../../services/shared/column';
 
 @Component({
@@ -6,32 +8,16 @@ import { Column } from '../../../services/shared/column';
     templateUrl: './table-view.component.html',
     styleUrls: ['./table-view.component.css'],
 })
-export class TableViewComponent implements OnInit {
-    data: any[] = [
-        {
-            type: 'Mensual',
-            description: 'Sueldo',
-            date: '20/06/2022',
-            total: '$18.5',
-            account: 'JEP'
-        },
-        {
-            type: 'Unico',
-            description: 'Deuda',
-            date: '20/06/2022',
-            total: '$10.5',
-            account: 'JEP'
-        },
-    ];
 
-    columns: Column[] = [
-        { field: 'type', header: 'Tipo' },
-        { field: 'description', header: 'Descripcion' },
-        { field: 'date', header: 'Fecha' },
-        { field: 'total', header: 'Ingreso Total' },
-        { field: 'account', header: 'Cuenta' }
-    ];
-    constructor() {}
+export class TableViewComponent implements OnInit {
+    data: Income[];
+
+    columns: Column[];
+
+    constructor(private incomeService: IncomeService) {
+        this.data = incomeService.getIncome();
+        this.columns = tableHeaders;
+    }
 
     ngOnInit(): void {}
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoriesService } from '../../../services/categories/categories.service';
+import { Category, tableHeaders } from '../../../services/categories/category';
 import { Column } from '../../../services/shared/column';
 
 @Component({
@@ -7,30 +9,13 @@ import { Column } from '../../../services/shared/column';
     styleUrls: ['./table-view.component.css'],
 })
 export class TableViewComponent implements OnInit {
-    data: any[] = [
-        {
-            name: 'Ropa',
-            description: 'Camisetas, zapatos, ropa interior',
-            expense: '$120',
-        },
-        {
-            name: 'Transporte',
-            description: 'Bus, Taxi, Viajes',
-            expense: '$120',
-        },
-        {
-            name: 'Comida',
-            description: 'Compras, restaurantes',
-            expense: '$120',
-        },
-    ];
+    data: Category[];
 
-    columns: Column[] = [
-        { field: 'name', header: 'Nombre' },
-        { field: 'description', header: 'Descripcion' },
-        { field: 'expense', header: 'Gasto Total' },
-    ];
-    constructor() {}
+    columns: Column[];
+    constructor(private categoriesService: CategoriesService) {
+        this.data = categoriesService.getCategories();
+        this.columns = tableHeaders;
+    }
 
     ngOnInit(): void {}
 }
