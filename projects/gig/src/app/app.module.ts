@@ -11,12 +11,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
 import { HomeModule } from './home/home.module';
+import {HomeRoutingModule} from './home/home-routing.module';
 
 @NgModule({
     declarations: [AppComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
+
         BrowserAnimationsModule,
         HomeModule,
         AccountsModule,
@@ -27,6 +29,7 @@ import { HomeModule } from './home/home.module';
         WishlistModule,
 
         SharedModule,
+        HomeRoutingModule
     ],
     providers: [],
     bootstrap: [AppComponent],

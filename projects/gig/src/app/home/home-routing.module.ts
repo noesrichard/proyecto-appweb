@@ -1,21 +1,37 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TableViewComponent as account} from '../accounts/components/table-view/table-view.component';
-import { TableViewComponent as expenses } from '../expenses/components/table-view/table-view.component';
-import { TableViewComponent as wishlist } from '../wishlist/components/table-view/table-view.component';
-import { TableViewComponent as income } from '../income/components/table-view/table-view.component';
-import { TableViewComponent as categories } from '../categories/components/table-view/table-view.component';
-import {BalanceViewComponent} from './components/balance-view/balance-view.component';
+import { BalanceViewComponent } from './components/balance-view/balance-view.component';
 
 export const routes: Routes = [
     { path: '', component: BalanceViewComponent },
     { path: 'balance', component: BalanceViewComponent },
-    { path: 'accounts', component: account },
-    { path: 'categories', component: categories },
-    { path: 'expenses', component: expenses },
-    { path: 'income', component: income },
-    { path: 'wishlist', component: wishlist },
-    
+    {
+        path: 'accounts',
+        loadChildren: () =>
+            import('../accounts/accounts.module').then((m) => m.AccountsModule),
+    },
+    {
+        path: 'categories',
+        loadChildren: () =>
+            import('../categories/categories.module').then(
+                (m) => m.CategoriesModule
+            ),
+    },
+    {
+        path: 'expenses',
+        loadChildren: () =>
+            import('../expenses/expenses.module').then((m) => m.ExpensesModule),
+    },
+    {
+        path: 'income',
+        loadChildren: () =>
+            import('../income/income.module').then((m) => m.IncomeModule),
+    },
+    {
+        path: 'wishlist',
+        loadChildren: () =>
+            import('../wishlist/wishlist.module').then((m) => m.WishlistModule),
+    },
 ];
 
 @NgModule({
