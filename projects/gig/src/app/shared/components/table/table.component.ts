@@ -14,15 +14,20 @@ export class TableComponent<T extends TableData> implements OnInit {
 
     @Input() columns!: Column[];
     @Input() data: T[] = []; 
-    @Output() onShowNewForm: EventEmitter<boolean> = new EventEmitter(); 
+    @Input() title?: string; 
+    @Output() onEdit: EventEmitter<T> = new EventEmitter<T>();  
+    @Output() onNew: EventEmitter<T> = new EventEmitter<T>();  
+
+    displayForm: boolean = false; 
 
     stringData = ColumnType.String; 
     moneyData = ColumnType.Money; 
-
+    
 
     constructor(private confirmationService: ConfirmationService, private messageService: MessageService) {}
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+    }
 
     deleteRow(rowId: number): void{ 
         this.confirmationService.confirm({ 
@@ -40,8 +45,17 @@ export class TableComponent<T extends TableData> implements OnInit {
         });
     }
 
-    showNewForm(): void{ 
-        console.log("click en tabla")
-        this.onShowNewForm.emit(true);
+    editRow(item: T){ 
+        this.onEdit.emit(item);
+        this.displayForm = true; 
+    }
+
+    newRow(): void{ 
+        this.displayForm = true; 
+        this.onEdit.emit(); 
+    }
+
+    hideForm(): void{ 
+        this.displayForm = false; 
     }
 }

@@ -1,0 +1,16 @@
+<div class="field">
+    <label for="option-input">{{title}}</label>
+    <p-dropdown
+        placeholder="Seleccione una opción"
+        name="selected"
+        inputId="option-input"
+        optionLabel="label"
+        [options]="options"
+        [(ngModel)]="selected"
+    >
+        <ng-template let-option pTemplate="item">
+            <span>{{ option.label }}</span>
+        </ng-template>
+    </p-dropdown>
+        
+</div>

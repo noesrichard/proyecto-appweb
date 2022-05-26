@@ -5,7 +5,7 @@
         pRipple
         label="Nuevo"
         icon="pi pi-plus"
-        (click)="showNewForm()"
+        (click)="newRow()"
     ></button>
 </p-toolbar>
 <p-table [value]="data">
@@ -34,6 +34,7 @@
                         pRipple
                         icon="pi pi-pencil"
                         class="p-button-rounded mr-2"
+                        (click)="editRow(data)"
                     ></button>
                     <button
                         pButton
@@ -52,4 +53,29 @@
     icon="pi pi-exclamation-triangle"
     acceptLabel="Sí"
 ></p-confirmDialog>
-<ng-content> </ng-content>
+<p-dialog
+    [style]="{ width: '350px' }"
+    header="Nuevo/a {{title}}"
+    [modal]="true"
+    styleClass="p-fluid"
+    [(visible)]="displayForm"
+    [closable]="false"
+>
+    <div class="center-flex">
+        <ng-content>
+        </ng-content>
+    </div>
+    <ng-template pTemplate="footer">
+        <p-button
+            icon="pi pi-times"
+            (click)="hideForm()"
+            label="Cancelar"
+            styleClass="p-button-text"
+        ></p-button>
+        <p-button
+            icon="pi pi-check"
+            (click)="hideForm()"
+            label="Guardar"
+        ></p-button>
+    </ng-template>
+</p-dialog>

@@ -1,6 +1,7 @@
 //Imports de Angular
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 //Imports locales de components
 import { TableComponent } from './components/table/table.component';
@@ -37,6 +38,9 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { MenuModule } from 'primeng/menu';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { NewFormComponent } from './components/new-form/new-form.component';
+import { TextInputComponent } from './components/text-input/text-input.component';
+import { DropdownOptionInputComponent } from './components/dropdown-option-input/dropdown-option-input.component';
+
 
 @NgModule({
     declarations: [
@@ -49,9 +53,12 @@ import { NewFormComponent } from './components/new-form/new-form.component';
         TabpanelComponent,
         UserBubbleComponent,
         NewFormComponent,
+        TextInputComponent,
+        DropdownOptionInputComponent,
     ],
     imports: [
         CommonModule,
+        FormsModule,
 
         TabMenuModule,
         MenuModule,
@@ -85,6 +92,8 @@ import { NewFormComponent } from './components/new-form/new-form.component';
         TabpanelComponent,
         UserBubbleComponent,
         NewFormComponent,
+        TextInputComponent,
+        DropdownOptionInputComponent,
     ],
     providers: [MessageService, ConfirmationService],
 })

@@ -1,3 +1,5 @@
-<gig-new-form [visible]="visible">
-   <input type="text" pInputText />
-</gig-new-form>
+<gig-dropdown-option-input [options]="accountTypeOptions" title="Tipo de Cuenta"
+                      [selected]="selected"
+    ></gig-dropdown-option-input> 
+<gig-text-input text="Nombre" [selected]="account?.name"></gig-text-input>
+<gig-text-input text="Descripción" [selected]="account?.description"></gig-text-input>

@@ -15,6 +15,7 @@ export class TableViewComponent implements OnInit {
     visible: boolean = false;
 
     header: string = 'Vista de Tabla';
+    account: any = null;
 
     constructor(private accountService: AccountsService) {
         this.accounts = this.accountService.getAccounts();
@@ -23,8 +24,12 @@ export class TableViewComponent implements OnInit {
 
     ngOnInit(): void {}
 
-    showNewAccountForm(toggle: boolean){ 
-        this.visible = !this.visible;
+    editAccount(item: Account){ 
+        this.account = item;         
+    }
+
+    newAccount(){ 
+        this.account = null; 
     }
 
     //info: Info = {

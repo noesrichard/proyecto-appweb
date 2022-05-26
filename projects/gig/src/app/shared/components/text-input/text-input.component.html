@@ -1,0 +1,13 @@
+<div class="field">
+    <label for="name">{{text}}</label>
+    <input
+        type="text"
+        pInputText
+        id="name"
+        required
+        [(ngModel)]="selected"
+    />
+    <small class="p-error" *ngIf="false"
+        >Campo obligatorio</small
+    >
+</div>
