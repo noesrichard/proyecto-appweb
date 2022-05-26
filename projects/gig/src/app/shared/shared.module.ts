@@ -36,6 +36,7 @@ import { MessageService } from 'primeng/api';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { MenuModule } from 'primeng/menu';
 import { TabMenuModule } from 'primeng/tabmenu';
+import { NewFormComponent } from './components/new-form/new-form.component';
 
 @NgModule({
     declarations: [
@@ -47,6 +48,7 @@ import { TabMenuModule } from 'primeng/tabmenu';
         TableComponent,
         TabpanelComponent,
         UserBubbleComponent,
+        NewFormComponent,
     ],
     imports: [
         CommonModule,
@@ -82,6 +84,7 @@ import { TabMenuModule } from 'primeng/tabmenu';
         TableComponent,
         TabpanelComponent,
         UserBubbleComponent,
+        NewFormComponent,
     ],
     providers: [MessageService, ConfirmationService],
 })

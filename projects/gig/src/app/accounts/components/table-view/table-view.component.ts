@@ -12,29 +12,8 @@ import { Info } from '../../../shared/components/stat-card/stat-card.component';
 export class TableViewComponent implements OnInit {
     accounts: Account[];
     tableHeaders: Column[];
+    visible: boolean = false;
 
-    info: Info = {
-        title: 'Pichincha Credito',
-        icon: 'pi pi-credit-card',
-        value: 100,
-        percentage: 15,
-        description: 'Tarjeta de credito',
-    };
-    info2: Info = {
-        title: 'JEP Ahorro',
-        icon: 'pi pi-credit-card',
-        value: 10,
-        percentage: 10,
-        description: 'Tarjeta de debito',
-    };
-
-    info3: Info = {
-        title: 'Efectivo',
-        icon: 'pi pi-dollar',
-        value: 80,
-        percentage: 60,
-        description: 'Billetera, efectivo',
-    };
     header: string = 'Vista de Tabla';
 
     constructor(private accountService: AccountsService) {
@@ -43,4 +22,31 @@ export class TableViewComponent implements OnInit {
     }
 
     ngOnInit(): void {}
+
+    showNewAccountForm(toggle: boolean){ 
+        this.visible = !this.visible;
+    }
+
+    //info: Info = {
+        //title: 'Pichincha Credito',
+        //icon: 'pi pi-credit-card',
+        //value: 100,
+        //percentage: 15,
+        //description: 'Tarjeta de credito',
+    //};
+    //info2: Info = {
+        //title: 'JEP Ahorro',
+        //icon: 'pi pi-credit-card',
+        //value: 10,
+        //percentage: 10,
+        //description: 'Tarjeta de debito',
+    //};
+
+    //info3: Info = {
+        //title: 'Efectivo',
+        //icon: 'pi pi-dollar',
+        //value: 80,
+        //percentage: 60,
+        //description: 'Billetera, efectivo',
+    //};
 }
