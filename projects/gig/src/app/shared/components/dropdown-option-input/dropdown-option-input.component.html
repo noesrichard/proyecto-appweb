@@ -6,6 +6,7 @@
         inputId="option-input"
         optionLabel="label"
         [options]="options"
+        (ngModelChange)="sendData()"
         [(ngModel)]="selected"
     >
         <ng-template let-option pTemplate="item">

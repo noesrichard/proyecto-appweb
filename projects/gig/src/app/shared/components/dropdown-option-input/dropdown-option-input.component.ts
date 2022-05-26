@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 export interface Option {
     label: string;
     value: string;
@@ -12,8 +12,13 @@ export class DropdownOptionInputComponent implements OnInit {
     @Input() options!: Option[];
     @Input() title!: string;
     @Input() selected?: Option;
+    @Output() type: EventEmitter<String> = new EventEmitter();
 
     constructor() {}
 
     ngOnInit(): void {}
+
+    sendData(){ 
+        this.type.emit(this.selected.value);
+    }
 }

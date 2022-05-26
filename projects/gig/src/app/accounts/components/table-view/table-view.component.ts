@@ -32,6 +32,10 @@ export class TableViewComponent implements OnInit {
         this.account = null; 
     }
 
+    addAccount(account: Account){ 
+        this.accounts.push(account);
+    }
+
     //info: Info = {
         //title: 'Pichincha Credito',
         //icon: 'pi pi-credit-card',

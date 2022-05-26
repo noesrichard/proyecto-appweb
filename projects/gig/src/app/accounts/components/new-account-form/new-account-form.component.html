@@ -1,5 +1,52 @@
-<gig-dropdown-option-input [options]="accountTypeOptions" title="Tipo de Cuenta"
-                      [selected]="selected"
-    ></gig-dropdown-option-input> 
-<gig-text-input text="Nombre" [selected]="account?.name"></gig-text-input>
-<gig-text-input text="Descripción" [selected]="account?.description"></gig-text-input>
+<p-toolbar styleClass="mb-4">
+    <button
+        pButton
+        pRipple
+        label="Nuevo"
+        icon="pi pi-plus"
+        (click)="newAccount()"
+    ></button>
+</p-toolbar>
+<p-dialog
+    [style]="{ width: '350px' }"
+    header="Nueva Cuenta"
+    [modal]="true"
+    styleClass="p-fluid"
+    [(visible)]="displayForm"
+    [closable]="false"
+>
+    <div class="form-conatiner">
+        <gig-dropdown-option-input
+            [options]="accountTypeOptions"
+            title="Tipo de Cuenta"
+            [selected]="selected"
+        ></gig-dropdown-option-input>
+        <gig-text-input
+            text="Nombre"
+            id="name"
+            #accountname
+            [selected]="account?.name"
+            (onDataChanged)="setName($event)"
+        ></gig-text-input>
+        <gig-text-input
+            text="Descripción"
+            id="description"
+            #description
+            [selected]="account?.description"
+            (onDataChanged)="setDescription($event)"
+        ></gig-text-input>
+    </div>
+    <ng-template pTemplate="footer">
+        <p-button
+            icon="pi pi-times"
+            (click)="displayForm = false"
+            label="Cancelar"
+            styleClass="p-button-text"
+        ></p-button>
+        <p-button
+            icon="pi pi-check"
+            (click)="save()"
+            label="Guardar"
+        ></p-button>
+    </ng-template>
+</p-dialog>

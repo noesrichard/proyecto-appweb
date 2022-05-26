@@ -1,9 +1,9 @@
 <gig-container>
     <p-tabView>
         <p-tabPanel header="Vista de  Tabla">
+            <gig-new-account-form (onNewAccount)="addAccount($event)"></gig-new-account-form>
             <gig-table [columns]="tableHeaders" [data]="accounts" title="Cuenta" 
                 (onEdit)="editAccount($event)" (onNew)="newAccount()">
-                <gig-new-account-form [account]="account"></gig-new-account-form>
             </gig-table>
         </p-tabPanel>
         <p-tabPanel header="Informacion">

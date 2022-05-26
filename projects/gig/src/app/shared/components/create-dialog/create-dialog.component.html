@@ -1,24 +1,34 @@
+<p-toolbar styleClass="mb-4">
+    <button
+        pButton
+        pRipple
+        label="Nuevo"
+        icon="pi pi-plus"
+        (click)="newRow()"
+    ></button>
+</p-toolbar>
 <p-dialog
-    [style]="{ width: '450px' }"
-    header="Product Details"
+    [style]="{ width: '350px' }"
+    header="Nuevo/a {{title}}"
     [modal]="true"
     styleClass="p-fluid"
-    [(visible)]="visible"
+    [(visible)]="displayForm"
     [closable]="false"
 >
     <div class="center-flex">
-        <ng-content></ng-content>
+        <ng-content>
+        </ng-content>
     </div>
     <ng-template pTemplate="footer">
         <p-button
             icon="pi pi-times"
-            (click)="hideNewForm()"
+            (click)="hideForm()"
             label="Cancelar"
             styleClass="p-button-text"
         ></p-button>
         <p-button
             icon="pi pi-check"
-            (click)="hideNewForm()"
+            (click)="hideForm()"
             label="Guardar"
         ></p-button>
     </ng-template>
