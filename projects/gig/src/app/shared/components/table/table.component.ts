@@ -14,9 +14,11 @@ export class TableComponent<T extends TableData> implements OnInit {
 
     @Input() columns!: Column[];
     @Input() data: T[] = []; 
-    @Input() title?: string; 
+    @Input() title: string = "";  
     @Output() onEdit: EventEmitter<T> = new EventEmitter<T>();  
     @Output() onNew: EventEmitter<T> = new EventEmitter<T>();  
+
+    modalTitle: string = "";
 
     displayForm: boolean = false; 
 
@@ -48,11 +50,13 @@ export class TableComponent<T extends TableData> implements OnInit {
     editRow(item: T){ 
         this.onEdit.emit(item);
         this.displayForm = true; 
+        this.modalTitle = "Editar "+this.title; 
     }
 
     newRow(): void{ 
         this.displayForm = true; 
         this.onEdit.emit(); 
+        this.modalTitle = "Crear "+this.title; 
     }
 
     hideForm(): void{ 

@@ -2,11 +2,11 @@
     <label for="option-input">{{title}}</label>
     <p-dropdown
         placeholder="Seleccione una opción"
-        name="selected"
+        name="option"
         inputId="option-input"
         optionLabel="label"
         [options]="options"
-        [(ngModel)]="selected"
+        [(ngModel)]="option"
     >
         <ng-template let-option pTemplate="item">
             <span>{{ option.label }}</span>
