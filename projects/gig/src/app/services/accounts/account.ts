@@ -10,20 +10,18 @@ export const tableHeaders: Column[] = [
 ];
 
 export class Account implements TableData {
-    id?: number;
+    _id?: number;
     type: string;
     name: string;
     description: string;
     expense: number;
 
     constructor(
-        id: number,
         type: string,
         name: string,
         description: string,
         expense: number
     ) {
-        this.id = id;
         this.type = type;
         this.name = name;
         this.description = description;
@@ -31,7 +29,7 @@ export class Account implements TableData {
     }
 
     isNew(): boolean{ 
-        if(this.id == 0){ 
+        if(!this._id){ 
             return true; 
         }
         return false;

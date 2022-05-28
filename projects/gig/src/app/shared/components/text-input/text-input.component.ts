@@ -8,9 +8,9 @@ import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 export class TextInputComponent implements OnInit {
 
     @Input() text: string = "Text"; 
-    @Input() selected?: string; 
+    @Input() selected?: any; 
     @Input() id: string = 'id'; 
-    @Output() onDataChanged: EventEmitter<string> = new EventEmitter<string>(); 
+    @Output() onDataChanged: EventEmitter<any> = new EventEmitter<any>(); 
 
   constructor() { }
 

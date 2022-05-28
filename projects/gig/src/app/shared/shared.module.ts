@@ -41,7 +41,6 @@ import { TextInputComponent } from './components/text-input/text-input.component
 import { DropdownOptionInputComponent } from './components/dropdown-option-input/dropdown-option-input.component';
 import { CreateDialogComponent } from './components/create-dialog/create-dialog.component';
 
-
 @NgModule({
     declarations: [
         ContainerComponent,
@@ -93,7 +92,31 @@ import { CreateDialogComponent } from './components/create-dialog/create-dialog.
         UserBubbleComponent,
         TextInputComponent,
         DropdownOptionInputComponent,
-        CreateDialogComponent
+        CreateDialogComponent,
+
+        FormsModule,
+
+        TabMenuModule,
+        MenuModule,
+        TableModule,
+        CalendarModule,
+        SliderModule,
+        DialogModule,
+        MultiSelectModule,
+        ContextMenuModule,
+        DropdownModule,
+        ButtonModule,
+        ToastModule,
+        InputTextModule,
+        ProgressBarModule,
+        FileUploadModule,
+        ToolbarModule,
+        RatingModule,
+        RadioButtonModule,
+        InputNumberModule,
+        ConfirmDialogModule,
+        InputTextareaModule,
+        TabViewModule,
     ],
     providers: [MessageService, ConfirmationService],
 })

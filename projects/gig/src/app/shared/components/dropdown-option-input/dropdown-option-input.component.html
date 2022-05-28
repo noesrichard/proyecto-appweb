@@ -8,6 +8,7 @@
         [options]="options"
         (ngModelChange)="sendData($event)"
         [(ngModel)]="selected"
+        appendTo="body"
     >
         <ng-template let-option pTemplate="item">
             <span>{{ option.label }}</span>

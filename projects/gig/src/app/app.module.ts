@@ -12,6 +12,7 @@ import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
 import { HomeModule } from './home/home.module';
 import { HomeRoutingModule } from './home/home-routing.module';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
     declarations: [AppComponent],
@@ -30,6 +31,7 @@ import { HomeRoutingModule } from './home/home-routing.module';
 
         SharedModule,
         HomeRoutingModule,
+        HttpClientModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

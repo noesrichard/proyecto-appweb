@@ -9,18 +9,18 @@ export const tableHeaders: Column[] = [
 ];
 
 export class Wish implements TableData {
-    id: number;
+    _id: number;
     description: string;
     category: string;
     total: number;
 
     constructor(
-        id: number,
+        _id: number,
         description: string,
         category: string,
         total: number
     ) {
-        this.id = id;
+        this._id = _id;
         this.description = description;
         this.category = category;
         this.total = total;

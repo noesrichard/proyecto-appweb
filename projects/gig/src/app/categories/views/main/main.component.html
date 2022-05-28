@@ -2,16 +2,16 @@
     <p-toast position="bottom-center"></p-toast>
     <p-tabView>
         <p-tabPanel header="Vista de  Tabla">
-            <button (click)="onNew()" pButton>Nueva Cuenta</button>
+            <button (click)="onNew()" pButton>Nueva Categoria</button>
 
             <gig-create-dialog [(display)]="display" [title]="title">
-                <gig-form [display]="display" (displayChange)="hideForm()" 
-                    [account]="account"></gig-form>
+                <gig-form [display]="display" (displayChange)="hideForm()"
+                    [category]="category"></gig-form>
             </gig-create-dialog>
 
             <gig-table
-                [columns]="accountHeaders"
-                [data]="accounts"
+                [columns]="categoryHeaders"
+                [data]="categorys"
                 (onEdit)="onEdit($event)"
                 (onDelete)="onDelete($event)"
             >

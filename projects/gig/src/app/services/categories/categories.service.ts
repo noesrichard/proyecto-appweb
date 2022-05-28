@@ -1,14 +1,32 @@
 import { Injectable } from '@angular/core';
-import {Category} from './category';
+import { Service } from '../shared/service';
+import { Category } from './category';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
-export class CategoriesService {
+export class CategoryService implements Service<Category> {
+    constructor() {}
 
-  constructor() { }
+    getCategories(): Category[] {
+        return [new Category(1, 'Ropa', 'Camiestas, zapatos, etc...', 30)];
+    }
 
-  getCategories(): Category[]{ 
-      return [ new Category(1, 'Ropa', 'Camiestas, zapatos, etc...', 30) ]
-  }
+    list(): Category[] {
+        return [new Category(1, 'Ropa', 'Camiestas, zapatos, etc...', 30)];
+    }
+
+    findById(id: any): Category {
+        return new Category(1, 'Ropa', 'Camiestas, zapatos, etc...', 30);
+    }
+
+    create(element: Category): void {}
+
+    update(id: any, element: Category): void{
+
+    }
+
+    delete(id: any): void{
+
+    }
 }

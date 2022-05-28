@@ -2,14 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ExpensesRoutingModule } from './expenses-routing.module';
-import { TableViewComponent } from './components/table-view/table-view.component';
 import {SharedModule} from '../shared/shared.module';
 import {TabViewModule} from 'primeng/tabview';
+import { FormComponent } from './components/form/form.component';
+import { MainComponent } from './views/main/main.component';
 
 
 @NgModule({
   declarations: [
-    TableViewComponent
+    FormComponent,
+    MainComponent
   ],
   imports: [
     CommonModule,

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AccountsService } from '../../../services/accounts/accounts.service';
-import { Account, tableHeaders } from '../../../services/accounts/account';
-import { Column } from '../../../services/shared/column';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { Income, tableHeaders } from '../../../services/income/income';
+import { IncomeService } from '../../../services/income/income.service';
+import { Column } from '../../../services/shared/column';
 
 @Component({
     selector: 'gig-main',
@@ -10,57 +10,48 @@ import { ConfirmationService, MessageService } from 'primeng/api';
     styleUrls: ['./main.component.css'],
 })
 export class MainComponent implements OnInit {
-    accounts: Account[] = [];
-    accountHeaders: Column[];
+    incomes: Income[];
+    incomeHeaders: Column[];
 
     title: string = 'Nueva Cuenta';
 
     display: boolean = false;
 
-    account: Account = new Account( '', '', '', 0);
+    income: Income = new Income(0, '', '', new Date(Date.now()), '', 0);
 
     constructor(
-        private accountService: AccountsService,
+        private incomeService: IncomeService,
         private messageService: MessageService,
         private confirmationService: ConfirmationService
     ) {
-        this.accountHeaders = tableHeaders;
+        this.incomes = this.incomeService.list();
+        this.incomeHeaders = tableHeaders;
     }
 
-    ngOnInit(): void {
-        this.listAccounts();
-    }
-
-    listAccounts(){ 
-        this.accountService.list().subscribe(data => { 
-            this.accounts = data; 
-        })
-    }
-
+    ngOnInit(): void {}
 
     onNew() {
         this.display = true;
-        this.account = new Account( '', '', '', 0);
+        this.income = new Income(0, '', '', new Date(Date.now()), '', 0);
         this.title = 'Nueva Cuenta';
     }
 
-    onEdit(account: Account) {
-        this.account = account;
+    onEdit(income: Income) {
+        this.income = income;
         this.display = true;
         this.title = 'Editar Cuenta';
     }
 
-    onDelete(account: Account) {
-        console.log(this.accounts);
-        console.log("cuenta seleccionada", account);
-        let id = account._id;
+    onDelete(income: Income) {
+        console.log(this.incomes);
+        console.log('cuenta seleccionada', income);
+        let id = income._id;
         this.confirmationService.confirm({
             message: '¿Seguro de eliminar el producto seleccionado?',
             header: 'Confirmación',
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
-                this.accountService.delete(id).subscribe();
-                console.log(id);
+                this.incomeService.delete(id);
                 this.messageService.add({
                     severity: 'success',
                     summary: 'Exitoso',

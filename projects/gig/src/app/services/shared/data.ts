@@ -1,4 +1,4 @@
 
 export interface TableData{ 
-    id?: number; 
+    _id?: number; 
 }

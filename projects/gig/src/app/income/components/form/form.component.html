@@ -1,0 +1,43 @@
+<!--Formulario-->
+<div class="form-conatiner">
+    <gig-dropdown-option-input
+        [options]="incomeTypeOptions"
+        title="Tipo de Gasto"
+        [selected]="selected"
+        (optionChange)="setType($event)"
+    ></gig-dropdown-option-input>
+
+    <gig-text-input
+        text="Descripción"
+        id="description"
+        [selected]="income?.description"
+        (onDataChanged)="setDescription($event)"
+    ></gig-text-input>
+
+    <gig-dropdown-option-input
+        [options]="incomeAccountOptions"
+        title="Cuenta"
+        [selected]="selected"
+        (optionChange)="setAccount($event)"
+    ></gig-dropdown-option-input>
+
+    <gig-text-input
+        text="Gasto"
+        id="total"
+        [selected]="income?.total"
+        (onDataChanged)="setTotal($event)"
+    ></gig-text-input>
+
+
+    
+</div>
+<!--Botones-->
+<div class="button-container">
+    <p-button
+        icon="pi pi-times"
+        (click)="hideForm()"
+        label="Cancelar"
+        styleClass="p-button-text"
+    ></p-button>
+    <p-button icon="pi pi-check" (click)="save()" label="Guardar"></p-button>
+</div>

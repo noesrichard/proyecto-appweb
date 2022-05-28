@@ -1,0 +1,10 @@
+@import "primeflex/primeflex.css";
+p-tabView{ 
+    width: 100%;
+}
+
+.card-container{ 
+    display: flex;
+    justify-content: space-between;
+}
+

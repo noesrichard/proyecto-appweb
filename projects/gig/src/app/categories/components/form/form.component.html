@@ -1,0 +1,26 @@
+<!--Formulario-->
+<div class="form-conatiner">
+        <gig-text-input
+        text="Nombre"
+        id="name"
+        [selected]="category?.name"
+        (onDataChanged)="setName($event)"
+    ></gig-text-input>
+
+    <gig-text-input
+        text="Descripción"
+        id="description"
+        [selected]="category?.description"
+        (onDataChanged)="setDescription($event)"
+    ></gig-text-input>
+</div>
+<!--Botones-->
+<div class="button-container">
+    <p-button
+        icon="pi pi-times"
+        (click)="hideForm()"
+        label="Cancelar"
+        styleClass="p-button-text"
+    ></p-button>
+    <p-button icon="pi pi-check" (click)="save()" label="Guardar"></p-button>
+</div>

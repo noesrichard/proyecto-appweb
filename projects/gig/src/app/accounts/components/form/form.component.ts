@@ -1,12 +1,11 @@
 import {
     Component,
+    EventEmitter,
     Input,
     OnChanges,
     OnInit,
-    SimpleChanges,
-    EventEmitter,
     Output,
-    OnDestroy,
+    SimpleChanges,
 } from '@angular/core';
 import { Account } from '../../../services/accounts/account';
 import { AccountsService } from '../../../services/accounts/accounts.service';
@@ -46,10 +45,10 @@ export class FormComponent implements OnInit, OnChanges {
     }
 
     save() {
-        if(this.account.isNew()){ 
-            this.accountService.create(this.account);
-        }else{ 
-            this.accountService.update(this.account.id, this.account);
+        if (!this.account._id) {
+            this.accountService.create(this.account).subscribe();
+        } else {
+            this.accountService.update(this.account._id, this.account).subscribe();
         }
         this.displayChange.emit(false);
     }
