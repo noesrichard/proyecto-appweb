@@ -1,11 +1,13 @@
 <div class="field">
-    <label for="name">{{text}}</label>
+    <label for="{{id}}">{{text}}</label>
     <input
         type="text"
         pInputText
-        id="name"
+        id="{{id}}"
+        #{{id}}
         required
         [(ngModel)]="selected"
+        (keyup)="sendData()"
     />
     <small class="p-error" *ngIf="false"
         >Campo obligatorio</small

@@ -10,7 +10,7 @@ export const tableHeaders: Column[] = [
 ];
 
 export class Account implements TableData {
-    id: number;
+    id?: number;
     type: string;
     name: string;
     description: string;
@@ -28,5 +28,12 @@ export class Account implements TableData {
         this.name = name;
         this.description = description;
         this.expense = expense;
+    }
+
+    isNew(): boolean{ 
+        if(this.id == 0){ 
+            return true; 
+        }
+        return false;
     }
 }

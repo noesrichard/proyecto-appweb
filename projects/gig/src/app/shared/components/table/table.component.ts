@@ -14,52 +14,30 @@ export class TableComponent<T extends TableData> implements OnInit {
 
     @Input() columns!: Column[];
     @Input() data: T[] = []; 
-    @Input() title: string = "";  
+
+
     @Output() onEdit: EventEmitter<T> = new EventEmitter<T>();  
-    @Output() onNew: EventEmitter<T> = new EventEmitter<T>();  
-
-    modalTitle: string = "";
-
-    displayForm: boolean = false; 
+    @Output() onDelete: EventEmitter<T> = new EventEmitter<T>();  
 
     stringData = ColumnType.String; 
     moneyData = ColumnType.Money; 
     
 
-    constructor(private confirmationService: ConfirmationService, private messageService: MessageService) {}
+    constructor() {}
 
     ngOnInit(): void {
     }
 
-    deleteRow(rowId: number): void{ 
-        this.confirmationService.confirm({ 
-            message: '¿Seguro de eliminar el producto seleccionado?',
-            header: 'Confirmación',
-            icon: 'pi pi-exclamation-triangle',
-            accept: () => { 
-                var index = this.data.map(x => { 
-                    return x.id;
-                }).indexOf(rowId);
-                this.data.splice(index,1);
-                this.messageService.add({severity:'success', summary:'Exitoso', detail: 'Registro eliminado', life: 3000});
-            }
-
-        });
+    deleteRow(element: T): void{ 
+        this.onDelete.emit(element)
     }
 
-    editRow(item: T){ 
-        this.onEdit.emit(item);
-        this.displayForm = true; 
-        this.modalTitle = "Editar "+this.title; 
-    }
 
-    newRow(): void{ 
-        this.displayForm = true; 
-        this.onEdit.emit(); 
-        this.modalTitle = "Crear "+this.title; 
+    editRow(element: T): void{ 
+        console.log(element);
+        this.onEdit.emit(element);
     }
-
-    hideForm(): void{ 
-        this.displayForm = false; 
-    }
+   
 }
+
+
