@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 export interface Option {
-    label: string;
-    value: string;
+    label?: string;
+    value?: string;
 }
 @Component({
     selector: 'gig-dropdown-option-input',
@@ -12,13 +12,14 @@ export class DropdownOptionInputComponent implements OnInit {
     @Input() options!: Option[];
     @Input() title!: string;
     @Input() selected?: Option;
-    @Output() type: EventEmitter<String> = new EventEmitter();
+
+    @Output() optionChange: EventEmitter<String> = new EventEmitter();
 
     constructor() {}
 
     ngOnInit(): void {}
 
-    sendData(){ 
-        this.type.emit(this.selected.value);
+    sendData(option: any){ 
+        this.optionChange.emit(option);
     }
 }

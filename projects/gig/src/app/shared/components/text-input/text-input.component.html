@@ -7,7 +7,7 @@
         #{{id}}
         required
         [(ngModel)]="selected"
-        (keydown)="sendData()"
+        (keyup)="sendData()"
     />
     <small class="p-error" *ngIf="false"
         >Campo obligatorio</small

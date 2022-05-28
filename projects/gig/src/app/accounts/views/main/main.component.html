@@ -1,0 +1,28 @@
+<gig-container>
+    <p-toast position="bottom-center"></p-toast>
+    <p-tabView>
+        <p-tabPanel header="Vista de  Tabla">
+            <button (click)="onNew()" pButton>Crear Cuenta</button>
+
+            <gig-create-dialog [(display)]="display" [title]="title">
+                <gig-form [display]="display" (displayChange)="hideForm()" 
+                    [account]="account"></gig-form>
+            </gig-create-dialog>
+
+            <gig-table
+                [columns]="accountHeaders"
+                [data]="accounts"
+                (onEdit)="onEdit($event)"
+                (onDelete)="onDelete($event)"
+            >
+            </gig-table>
+
+            <p-confirmDialog
+                header="Confirmation"
+                icon="pi pi-exclamation-triangle"
+                acceptLabel="Sí"
+            ></p-confirmDialog>
+        </p-tabPanel>
+        <p-tabPanel header="Informacion"> </p-tabPanel>
+    </p-tabView>
+</gig-container>

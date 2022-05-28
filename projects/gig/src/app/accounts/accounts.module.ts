@@ -2,19 +2,24 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AccountsRoutingModule } from './accounts-routing.module';
-import { TableViewComponent } from './components/table-view/table-view.component';
 import { SharedModule } from '../shared/shared.module';
 import { TabViewModule } from 'primeng/tabview';
-import { NewAccountFormComponent } from './components/new-account-form/new-account-form.component';
 import { DialogModule } from 'primeng/dialog';
-import {InputTextModule} from 'primeng/inputtext';
-import {FormsModule} from '@angular/forms';
-import {ToolbarModule} from 'primeng/toolbar';
-import {ButtonModule} from 'primeng/button';
-
+import { InputTextModule } from 'primeng/inputtext';
+import { FormsModule } from '@angular/forms';
+import { ToolbarModule } from 'primeng/toolbar';
+import { ButtonModule } from 'primeng/button';
+import { MainComponent } from './views/main/main.component';
+import { FormComponent } from './components/form/form.component';
+import {ConfirmationService, MessageService} from 'primeng/api';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ToastModule} from 'primeng/toast';
 
 @NgModule({
-    declarations: [TableViewComponent, NewAccountFormComponent],
+    declarations: [
+        MainComponent,
+        FormComponent,
+    ],
     imports: [
         CommonModule,
         FormsModule,
@@ -25,7 +30,10 @@ import {ButtonModule} from 'primeng/button';
         InputTextModule,
         ToolbarModule,
         ButtonModule,
+        ConfirmDialogModule,
+        ToastModule,
     ],
-    exports: [AccountsRoutingModule, TableViewComponent],
+    exports: [AccountsRoutingModule, ],
+    providers: [MessageService, ConfirmationService]
 })
 export class AccountsModule {}

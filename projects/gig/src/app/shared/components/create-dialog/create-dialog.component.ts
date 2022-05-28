@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'gig-create-dialog',
@@ -6,19 +6,17 @@ import { Component, Input, OnInit } from '@angular/core';
     styleUrls: ['./create-dialog.component.css'],
 })
 export class CreateDialogComponent implements OnInit {
-    @Input() title?: string = 'Title';
+    @Input() title: string = 'Title';
 
-    displayForm: boolean = false;
+    @Input() display: boolean = false;
+    @Output() displayChange = new EventEmitter<boolean>();
 
     constructor() {}
 
     ngOnInit(): void {}
 
-    newRow() {
-        this.displayForm = true;
+    onNew() {
+        this.display = true;
     }
 
-    hideForm() {
-        this.displayForm = false;
-    }
 }
