@@ -59,27 +59,22 @@ export class FormComponent implements OnInit {
     setCategoriesOptions() {
         this.categoryService.list().subscribe((data) => {
             data.forEach((category: Category) => {
-                this.expenseCategoryOptions.push({
-                    label: category.name,
-                    value: category.name.toLowerCase(),
-                });
+                this.expenseCategoryOptions.push(new Option(category.name, category._id));
             });
+            console.log("Opciones: ",this.expenseCategoryOptions);
         });
     }
 
     setAccountOptions() {
         this.accountService.list().subscribe((data) => {
             data.forEach((a: Account) => {
-                this.expenseAccountOptions.push({
-                    label: a.name,
-                    value: a.name.toLowerCase(),
-                });
+                this.expenseAccountOptions.push(new Option(a.name, a._id));
             });
         });
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        if (changes['expense'] && changes['expense'].currentValue) {
+        if (changes['expense'] && changes['expense'].currentValue._id) {
             let expense = changes['expense'];
             let type = this.expenseTypeOptions.find(
                 (element) => element.label == expense.currentValue.type
@@ -93,10 +88,12 @@ export class FormComponent implements OnInit {
                 ( element: Option ) => element.label == expense.currentValue.category            
             );
             this.selectedCategory = {...category}; 
+            console.log("Cambios");
         }
     }
 
     save() {
+        console.log(this.expense);
         if (!this.expense._id) {
             this.expenseService.create(this.expense).subscribe(()=>{ 
                this.dataChanged(); 
@@ -117,11 +114,11 @@ export class FormComponent implements OnInit {
     }
 
     setCategory(categoryOption: any) {
-        this.expense.category = categoryOption.label;
+        this.expense.category = categoryOption.value;
     }
 
     setAccount(accoutnOption: any) {
-        this.expense.account = accoutnOption.label;
+        this.expense.account = accoutnOption.value;
     }
 
     setTotal(total: number) {

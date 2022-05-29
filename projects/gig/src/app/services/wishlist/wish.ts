@@ -9,7 +9,7 @@ export const tableHeaders: Column[] = [
 ];
 
 export class Wish implements TableData {
-    _id?: number;
+    _id?: string;
     description: string;
     category: string;
     total: number;

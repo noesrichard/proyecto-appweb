@@ -34,6 +34,7 @@ export class MainComponent implements OnInit {
     listExpenses(){ 
         this.expenseService.list().subscribe( data => { 
             this.expenses = data; 
+            console.log(this.expenses);
         } );
     }
 

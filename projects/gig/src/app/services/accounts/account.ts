@@ -10,7 +10,7 @@ export const tableHeaders: Column[] = [
 ];
 
 export class Account implements TableData {
-    _id?: number;
+    _id?: string;
     type: string;
     name: string;
     description: string;

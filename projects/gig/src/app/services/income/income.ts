@@ -6,16 +6,16 @@ export const tableHeaders: Column[] = [
     { field: 'type', header: 'Tipo' , type: ColumnType.String},
     { field: 'description', header: 'Descripcion' , type: ColumnType.String},
     { field: 'date', header: 'Fecha' , type: ColumnType.Date},
-    { field: 'account', header: 'Cuenta' , type: ColumnType.String},
+    { field: 'account', header: 'Cuenta' , type: ColumnType.Object},
     { field: 'total', header: 'Ingreso Total' , type: ColumnType.Money},
 ];
 
 export class Income implements TableData {
-    _id?: number;
+    _id?: string;
     type: string;
     description: string;
     date: Date;
-    account: string;
+    account: any;
     total: number;
 
     constructor(

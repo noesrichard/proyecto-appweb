@@ -9,7 +9,7 @@ export const tableHeaders: Column[] = [
 ];
 
 export class Category implements TableData {
-    _id?: number;
+    _id?: string;
     name: string;
     description: string;
     expense: number;

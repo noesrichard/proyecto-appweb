@@ -22,6 +22,7 @@ export class TableComponent<T extends TableData> implements OnInit {
     stringData = ColumnType.String; 
     moneyData = ColumnType.Money; 
     dateData = ColumnType.Date; 
+    objectData = ColumnType.Object; 
     
 
     constructor() {}

@@ -16,6 +16,9 @@
                 <span *ngIf="column.type == moneyData">
                     ${{ data[column.field] }}
                 </span>
+                <span *ngIf="column.type == objectData">
+                    {{ data[column.field]['name'] }}
+                </span>
             </td>
             <td>
                 <div class="buttons-container">

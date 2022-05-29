@@ -54,29 +54,27 @@ export class FormComponent implements OnInit {
     setAccountOptions() {
         this.accountService.list().subscribe((data) => {
             data.forEach((a: Account) => {
-                this.incomeAccountOptions.push({
-                    label: a.name,
-                    value: a.name.toLowerCase(),
-                });
+                this.incomeAccountOptions.push(new Option(a.name, a._id));
             });
         });
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        if (changes['income'] && changes['income'].currentValue) {
+        if (changes['income'] && changes['income'].currentValue._id) {
             let income = changes['income'];
             let type = this.incomeTypeOptions.find(
                 (element) => element.label == income.currentValue.type
             );
-            this.selectedType = { label: type?.label, value: type?.value };
+            this.selectedType = {...type};
             let account = this.incomeAccountOptions.find(
                 (element: Option) => element.label == income.currentValue.account
             );
-            this.selectedAccount = {label: account?.label, value: account?.value}
+            this.selectedAccount = {...account}
         }
     }
 
     save() {
+        console.log(this.income);
         if (!this.income._id) {
             this.incomeService.create(this.income).subscribe(()=>{ 
                this.dataChanged(); 
@@ -97,7 +95,7 @@ export class FormComponent implements OnInit {
     }
 
     setAccount(accoutnOption: any) {
-        this.income.account = accoutnOption.label;
+        this.income.account = accoutnOption.value;
     }
 
     setTotal(total: number) {

@@ -33,6 +33,7 @@ export class MainComponent implements OnInit {
     listIncome(){ 
         this.incomeService.list().subscribe( data => { 
             this.incomes = data; 
+            console.log(this.incomes);
         } );
     }
 
