@@ -11,21 +11,23 @@ import {ExpensesService} from '../../../services/expenses/expenses.service';
 })
 export class MainComponent implements OnInit {
 
-    expenses: Expense[];
+    expenses: Expense[] = [];
     expenseHeaders: Column[];
 
     title: string = 'Crear Cuenta';
 
     display: boolean = false;
 
-    expense: Expense = new Expense(0, '', '', '', new Date(Date.now()), '', 0);
+    expense: Expense = new Expense( '', '', '', new Date(Date.now()), '', 0);
 
     constructor(
         private expenseService: ExpensesService,
         private messageService: MessageService,
         private confirmationService: ConfirmationService
     ) {
-        this.expenses = this.expenseService.list();
+        this.expenseService.list().subscribe( data => { 
+            this.expenses = data; 
+        } );
         this.expenseHeaders = tableHeaders;
     }
 
@@ -33,7 +35,7 @@ export class MainComponent implements OnInit {
 
     onNew() {
         this.display = true;
-        this.expense = new Expense(0, '', '', '', new Date(Date.now()), '', 0);
+        this.expense = new Expense( '', '', '', new Date(Date.now()), '', 0);
         this.title = 'Crear Cuenta';
     }
 
@@ -52,7 +54,7 @@ export class MainComponent implements OnInit {
             header: 'Confirmación',
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
-                this.expenseService.delete(id);
+                this.expenseService.delete(id).subscribe();
                 this.messageService.add({
                     severity: 'success',
                     summary: 'Exitoso',

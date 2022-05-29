@@ -28,10 +28,4 @@ export class Account implements TableData {
         this.expense = expense;
     }
 
-    isNew(): boolean{ 
-        if(!this._id){ 
-            return true; 
-        }
-        return false;
-    }
 }

@@ -1,41 +1,34 @@
+import {HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Service } from '../shared/service';
+import {Observable} from 'rxjs';
 import { Expense } from './expense';
 
 @Injectable({
     providedIn: 'root',
 })
-export class ExpensesService implements Service<Expense> {
-    constructor() {}
+export class ExpensesService{
 
-    list(): Expense[] {
-        return [
-            new Expense(
-                1,
-                'Unico',
-                'Camiseta Nike',
-                'Ropa',
-                new Date('12/12/2022'),
-                'JEP',
-                30
-            ),
-        ];
+    url: string = '/api/expenses/';
+
+    constructor(private http: HttpClient) {}
+
+    list(): Observable<any> {
+        return this.http.get(this.url);
     }
 
-    findById(id: any): Expense {
-        return new Expense(
-                1,
-                'Unico',
-                'Camiseta Nike',
-                'Ropa',
-                new Date('12/12/2022'),
-                'JEP',
-                30);
+    findById(id: any): Observable<any> {
+        return this.http.get(this.url + id);
     }
 
-    create(element: Expense): void {}
+    create(expense: Expense) {
+        return this.http.post(this.url, expense);
+    }
 
-    update(id: any, element: Expense): void {}
+    update(id: any, expense: Expense) {
+        return this.http.put(this.url + id, expense);
+    }
 
-    delete(id: any): void {}
+    delete(id: any) {
+        return this.http.delete(this.url + id);
+    }
 }

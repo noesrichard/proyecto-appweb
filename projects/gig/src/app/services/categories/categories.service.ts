@@ -1,32 +1,33 @@
+import {HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Service } from '../shared/service';
 import { Category } from './category';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
 })
-export class CategoryService implements Service<Category> {
-    constructor() {}
+export class CategoryService{
+    url: string = '/api/categories/';
 
-    getCategories(): Category[] {
-        return [new Category(1, 'Ropa', 'Camiestas, zapatos, etc...', 30)];
+    constructor(private http: HttpClient) {}
+
+    list(): Observable<any> {
+        return this.http.get(this.url);
     }
 
-    list(): Category[] {
-        return [new Category(1, 'Ropa', 'Camiestas, zapatos, etc...', 30)];
+    findById(id: any): Observable<any> {
+        return this.http.get(this.url + id);
     }
 
-    findById(id: any): Category {
-        return new Category(1, 'Ropa', 'Camiestas, zapatos, etc...', 30);
+    create(category: Category) {
+        return this.http.post(this.url, category);
     }
 
-    create(element: Category): void {}
-
-    update(id: any, element: Category): void{
-
+    update(id: any, category: Category) {
+        return this.http.put(this.url + id, category);
     }
 
-    delete(id: any): void{
-
+    delete(id: any) {
+        return this.http.delete(this.url + id);
     }
 }

@@ -1,41 +1,34 @@
 import { Injectable } from '@angular/core';
-import {Service} from '../shared/service';
 import { Income } from './income';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
 })
-export class IncomeService implements Service<Income>{
+export class IncomeService{
 
-    constructor() {}
+    url: string = '/api/income/';
 
-    list(): Income[] {
-        return [
-            new Income(
-                1,
-                'Unico',
-                'Camiseta Nike',
-                new Date('12/12/2022'),
-                'JEP',
-                30
-            ),
-        ];
+    constructor(private http: HttpClient) {}
+
+    list(): Observable<any> {
+        return this.http.get(this.url);
     }
 
-    findById(id: any): Income {
-        return new Income(
-            1,
-            'Unico',
-            'Camiseta Nike',
-            new Date('12/12/2022'),
-            'JEP',
-            30
-        );
+    findById(id: any): Observable<any> {
+        return this.http.get(this.url + id);
     }
 
-    create(element: Income): void {}
+    create(income: Income) {
+        return this.http.post(this.url, income);
+    }
 
-    update(id: any, element: Income): void {}
+    update(id: any, income: Income) {
+        return this.http.put(this.url + id, income);
+    }
 
-    delete(id: any): void {}
+    delete(id: any) {
+        return this.http.delete(this.url + id);
+    }
 }

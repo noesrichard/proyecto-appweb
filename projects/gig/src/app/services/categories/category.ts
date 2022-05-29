@@ -9,28 +9,19 @@ export const tableHeaders: Column[] = [
 ];
 
 export class Category implements TableData {
-    _id: number;
+    _id?: number;
     name: string;
     description: string;
     expense: number;
 
     constructor(
-        _id: number,
         name: string,
         description: string,
         expense: number
     ) {
-        this._id = _id;
         this.expense = expense;
         this.name = name;
         this.description = description;
         this.expense = expense;
-    }
-
-    isNew(): boolean {
-        if (this._id == 0) {
-            return true;
-        }
-        return false;
     }
 }

@@ -3,7 +3,7 @@
     <gig-dropdown-option-input
         [options]="incomeTypeOptions"
         title="Tipo de Gasto"
-        [selected]="selected"
+        [selected]="selectedType"
         (optionChange)="setType($event)"
     ></gig-dropdown-option-input>
 
@@ -17,7 +17,7 @@
     <gig-dropdown-option-input
         [options]="incomeAccountOptions"
         title="Cuenta"
-        [selected]="selected"
+        [selected]="selectedAccount"
         (optionChange)="setAccount($event)"
     ></gig-dropdown-option-input>
 

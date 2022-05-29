@@ -12,7 +12,7 @@ export const tableHeaders: Column[] = [
 ];
 
 export class Expense implements TableData {
-    _id: number;
+    _id?: number;
     type: string;
     description: string;
     category: string;
@@ -21,7 +21,6 @@ export class Expense implements TableData {
     total: number;
 
     constructor(
-        _id: number,
         type: string,
         description: string,
         category: string,
@@ -29,7 +28,6 @@ export class Expense implements TableData {
         account: string,
         total: number
     ) {
-        this._id = _id;
         this.description = description;
         this.type = type;
         this.category = category;
@@ -38,10 +36,4 @@ export class Expense implements TableData {
         this.total = total;
     }
 
-    isNew(){ 
-        if (this._id == 0){ 
-            return true; 
-        }
-        return false; 
-    }
 }

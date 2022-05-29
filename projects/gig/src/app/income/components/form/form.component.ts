@@ -23,7 +23,8 @@ export class FormComponent implements OnInit {
     @Input() display: boolean = false;
     @Output() displayChange = new EventEmitter<boolean>();
 
-    selected: Option = { label: 'Ahorro', value: 'ahorro' };
+    selectedType: Option = { label: 'Ahorro', value: 'ahorro' };
+    selectedAccount: Option = { label: '', value: '' };
 
     incomeTypeOptions: Option[] = [
         { label: 'Unico', value: 'unico' },
@@ -60,15 +61,19 @@ export class FormComponent implements OnInit {
             let type = this.incomeTypeOptions.find(
                 (element) => element.label == income.currentValue.type
             );
-            this.selected = { label: type?.label, value: type?.value };
+            this.selectedType = { label: type?.label, value: type?.value };
+            let account = this.incomeAccountOptions.find(
+                (element: Option) => element.label == income.currentValue.account
+            );
+            this.selectedAccount = {label: account?.label, value: account?.value}
         }
     }
 
     save() {
-        if (this.income.isNew()) {
-            this.incomeService.create(this.income);
+        if (!this.income._id) {
+            this.incomeService.create(this.income).subscribe();
         } else {
-            this.incomeService.update(this.income._id, this.income);
+            this.incomeService.update(this.income._id, this.income).subscribe();
         }
         this.displayChange.emit(false);
     }

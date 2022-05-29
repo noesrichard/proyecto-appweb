@@ -8,6 +8,6 @@ export class WishlistService {
     constructor() {}
 
     getWishList(): Wish[] {
-        return [new Wish(1, 'Camiseta Nike', 'Ropa', 30)];
+        return [new Wish( 'Camiseta Nike', 'Ropa', 30)];
     }
 }

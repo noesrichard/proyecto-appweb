@@ -10,21 +10,23 @@ import { Column } from '../../../services/shared/column';
     styleUrls: ['./main.component.css'],
 })
 export class MainComponent implements OnInit {
-    incomes: Income[];
+    incomes: Income[] = [];
     incomeHeaders: Column[];
 
     title: string = 'Nueva Cuenta';
 
     display: boolean = false;
 
-    income: Income = new Income(0, '', '', new Date(Date.now()), '', 0);
+    income: Income = new Income( '', '', new Date(Date.now()), '', 0);
 
     constructor(
         private incomeService: IncomeService,
         private messageService: MessageService,
         private confirmationService: ConfirmationService
     ) {
-        this.incomes = this.incomeService.list();
+        this.incomeService.list().subscribe( data => { 
+            this.incomes = data; 
+        } );
         this.incomeHeaders = tableHeaders;
     }
 
@@ -32,7 +34,7 @@ export class MainComponent implements OnInit {
 
     onNew() {
         this.display = true;
-        this.income = new Income(0, '', '', new Date(Date.now()), '', 0);
+        this.income = new Income( '', '', new Date(Date.now()), '', 0);
         this.title = 'Nueva Cuenta';
     }
 
@@ -51,7 +53,7 @@ export class MainComponent implements OnInit {
             header: 'Confirmación',
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
-                this.incomeService.delete(id);
+                this.incomeService.delete(id).subscribe();
                 this.messageService.add({
                     severity: 'success',
                     summary: 'Exitoso',

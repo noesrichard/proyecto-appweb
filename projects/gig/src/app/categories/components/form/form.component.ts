@@ -18,10 +18,10 @@ export class FormComponent implements OnInit {
     ngOnInit(): void {}
 
     save() {
-        if (this.category.isNew()) {
-            this.categoryService.create(this.category);
+        if (!this.category._id) {
+            this.categoryService.create(this.category).subscribe();
         } else {
-            this.categoryService.update(this.category._id, this.category);
+            this.categoryService.update(this.category._id, this.category).subscribe();
         }
         this.displayChange.emit(false);
     }
