@@ -14,7 +14,7 @@ export class MainComponent implements OnInit {
     expenses: Expense[] = [];
     expenseHeaders: Column[];
 
-    title: string = 'Crear Cuenta';
+    title: string = 'Nuevo Gasto';
 
     display: boolean = false;
 
@@ -25,24 +25,28 @@ export class MainComponent implements OnInit {
         private messageService: MessageService,
         private confirmationService: ConfirmationService
     ) {
-        this.expenseService.list().subscribe( data => { 
-            this.expenses = data; 
-        } );
+        this.listExpenses();
         this.expenseHeaders = tableHeaders;
     }
 
     ngOnInit(): void {}
 
+    listExpenses(){ 
+        this.expenseService.list().subscribe( data => { 
+            this.expenses = data; 
+        } );
+    }
+
     onNew() {
         this.display = true;
         this.expense = new Expense( '', '', '', new Date(Date.now()), '', 0);
-        this.title = 'Crear Cuenta';
+        this.title = 'Nuevo Gasto';
     }
 
     onEdit(expense: Expense) {
         this.expense = expense;
         this.display = true;
-        this.title = 'Editar Cuenta';
+        this.title = 'Editar Gasto';
     }
 
     onDelete(expense: Expense) {
@@ -54,7 +58,9 @@ export class MainComponent implements OnInit {
             header: 'Confirmación',
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
-                this.expenseService.delete(id).subscribe();
+                this.expenseService.delete(id).subscribe(() =>{ 
+                    this.listExpenses();
+                });
                 this.messageService.add({
                     severity: 'success',
                     summary: 'Exitoso',

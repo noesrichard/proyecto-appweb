@@ -13,13 +13,21 @@ export class FormComponent implements OnInit {
     @Input() display: boolean = false;
     @Output() displayChange = new EventEmitter<boolean>();
 
+    @Output() dataChange: EventEmitter<any> = new EventEmitter();
+
     constructor(private categoryService: CategoryService) {}
 
     ngOnInit(): void {}
 
+    dataChanged() {
+        this.dataChange.emit(true);
+    }
+
     save() {
         if (!this.category._id) {
-            this.categoryService.create(this.category).subscribe();
+            this.categoryService.create(this.category).subscribe(()=>{ 
+               this.dataChanged(); 
+            });
         } else {
             this.categoryService.update(this.category._id, this.category).subscribe();
         }

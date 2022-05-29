@@ -13,7 +13,7 @@ export class MainComponent implements OnInit {
     incomes: Income[] = [];
     incomeHeaders: Column[];
 
-    title: string = 'Nueva Cuenta';
+    title: string = 'Nuevo Ingreso';
 
     display: boolean = false;
 
@@ -24,24 +24,28 @@ export class MainComponent implements OnInit {
         private messageService: MessageService,
         private confirmationService: ConfirmationService
     ) {
-        this.incomeService.list().subscribe( data => { 
-            this.incomes = data; 
-        } );
+        this.listIncome();
         this.incomeHeaders = tableHeaders;
     }
 
     ngOnInit(): void {}
 
+    listIncome(){ 
+        this.incomeService.list().subscribe( data => { 
+            this.incomes = data; 
+        } );
+    }
+
     onNew() {
         this.display = true;
         this.income = new Income( '', '', new Date(Date.now()), '', 0);
-        this.title = 'Nueva Cuenta';
+        this.title = 'Nuevo Ingreso';
     }
 
     onEdit(income: Income) {
         this.income = income;
         this.display = true;
-        this.title = 'Editar Cuenta';
+        this.title = 'Editao Ingreso';
     }
 
     onDelete(income: Income) {
@@ -53,7 +57,9 @@ export class MainComponent implements OnInit {
             header: 'Confirmación',
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
-                this.incomeService.delete(id).subscribe();
+                this.incomeService.delete(id).subscribe(()=>{ 
+                    this.listIncome();
+                });
                 this.messageService.add({
                     severity: 'success',
                     summary: 'Exitoso',

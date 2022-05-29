@@ -46,3 +46,7 @@
 .flex{ 
     display: flex;
 }
+
+.btn-new{
+    margin-bottom: 10px;
+}

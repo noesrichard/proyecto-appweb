@@ -2,10 +2,12 @@
     <p-toast position="bottom-center"></p-toast>
     <p-tabView>
         <p-tabPanel header="Vista de  Tabla">
-            <button (click)="onNew()" pButton>Nuevo Gasto</button>
+            <div class="btn-new">
+                <button (click)="onNew()" pButton>Nuevo Gasto</button>
+            </div>
 
             <gig-create-dialog [(display)]="display" [title]="title">
-                <gig-form [display]="display" (displayChange)="hideForm()" 
+                <gig-form [display]="display" (displayChange)="hideForm()" (dataChange)="listExpenses()"
                     [expense]="expense"></gig-form>
             </gig-create-dialog>
 

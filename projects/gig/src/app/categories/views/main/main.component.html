@@ -2,10 +2,12 @@
     <p-toast position="bottom-center"></p-toast>
     <p-tabView>
         <p-tabPanel header="Vista de  Tabla">
-            <button (click)="onNew()" pButton>Nueva Categoria</button>
+            <div class="btn-new">
+                <button (click)="onNew()" pButton>Nueva Categoria</button>
+            </div>
 
             <gig-create-dialog [(display)]="display" [title]="title">
-                <gig-form [display]="display" (displayChange)="hideForm()"
+                <gig-form [display]="display" (displayChange)="hideForm()" (dataChange)="listCategories()"
                     [category]="category"></gig-form>
             </gig-create-dialog>
 

@@ -25,7 +25,8 @@ export class FormComponent implements OnInit {
     @Input() display: boolean = false;
     @Output() displayChange = new EventEmitter<boolean>();
 
-    
+
+    @Output() dataChange: EventEmitter<any> = new EventEmitter();
 
     selectedType: Option = { label: 'Ahorro', value: 'ahorro' };
     selectedAccount: Option = { label: '', value: '' };
@@ -45,6 +46,10 @@ export class FormComponent implements OnInit {
         private categoryService: CategoryService,
         private accountService: AccountsService
     ) {}
+
+    dataChanged() {
+        this.dataChange.emit(true);
+    }
 
     ngOnInit(): void {
         this.setCategoriesOptions();
@@ -93,9 +98,13 @@ export class FormComponent implements OnInit {
 
     save() {
         if (!this.expense._id) {
-            this.expenseService.create(this.expense).subscribe();
+            this.expenseService.create(this.expense).subscribe(()=>{ 
+               this.dataChanged(); 
+            });
         } else {
-            this.expenseService.update(this.expense._id, this.expense).subscribe();
+            this.expenseService.update(this.expense._id, this.expense).subscribe(()=>{ 
+               this.dataChanged(); 
+            });
         }
         this.displayChange.emit(false);
     }

@@ -13,7 +13,7 @@ export class MainComponent implements OnInit {
     categorys: Category[] = [];
     categoryHeaders:  Column[];
 
-    title: string = 'Crear Cuenta';
+    title: string = 'Nueva Categoria';
 
     display: boolean = false;
 
@@ -24,10 +24,14 @@ export class MainComponent implements OnInit {
         private messageService: MessageService,
         private confirmationService: ConfirmationService
     ) {
+        this.listCategories();
+        this.categoryHeaders = tableHeaders;
+    }
+
+    listCategories(){ 
         this.categoryService.list().subscribe(data => { 
             this.categorys = data; 
         });
-        this.categoryHeaders = tableHeaders;
     }
 
     ngOnInit(): void {}
@@ -35,13 +39,13 @@ export class MainComponent implements OnInit {
     onNew() {
         this.display = true;
         this.category = new Category( '', '', 0);
-        this.title = 'Crear Cuenta';
+        this.title = 'Nueva Categoria';
     }
 
     onEdit(category: Category) {
         this.category = category;
         this.display = true;
-        this.title = 'Editar Cuenta';
+        this.title = 'Editar Categoria';
     }
 
     onDelete(category: Category) {
@@ -53,7 +57,9 @@ export class MainComponent implements OnInit {
             header: 'Confirmación',
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
-                this.categoryService.delete(id).subscribe();
+                this.categoryService.delete(id).subscribe(()=>{
+                    this.listCategories();
+                });
                 this.messageService.add({
                     severity: 'success',
                     summary: 'Exitoso',

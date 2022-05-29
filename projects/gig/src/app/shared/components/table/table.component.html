@@ -10,7 +10,7 @@
     <ng-template pTemplate="body" let-data>
         <tr>
             <td *ngFor="let column of columns">
-                <span *ngIf="column.type == stringData">
+                <span *ngIf="column.type == stringData || column.type == dateData">
                     {{ data[column.field] }}
                 </span>
                 <span *ngIf="column.type == moneyData">

@@ -22,6 +22,8 @@ export class FormComponent implements OnInit, OnChanges {
     @Input() display: boolean = false;
     @Output() displayChange = new EventEmitter<boolean>();
 
+    @Output() dataChange: EventEmitter<any> = new EventEmitter();
+
     selected: Option = { label: 'Ahorro', value: 'ahorro' };
 
     accountTypeOptions: Option[] = [
@@ -44,11 +46,21 @@ export class FormComponent implements OnInit, OnChanges {
         }
     }
 
+    dataChanged() {
+        this.dataChange.emit(true);
+    }
+
     save() {
         if (!this.account._id) {
-            this.accountService.create(this.account).subscribe();
+            this.accountService.create(this.account).subscribe(() => {
+                this.dataChanged();
+            });
         } else {
-            this.accountService.update(this.account._id, this.account).subscribe();
+            this.accountService
+                .update(this.account._id, this.account)
+                .subscribe(() => {
+                    this.dataChanged();
+                });
         }
         this.displayChange.emit(false);
     }

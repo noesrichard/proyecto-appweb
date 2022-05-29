@@ -59,7 +59,9 @@ export class MainComponent implements OnInit {
             header: 'Confirmación',
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
-                this.accountService.delete(id).subscribe();
+                this.accountService.delete(id).subscribe(
+                    () => { this.listAccounts() }
+                );
                 console.log(id);
                 this.messageService.add({
                     severity: 'success',
