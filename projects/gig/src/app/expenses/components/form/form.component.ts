@@ -9,7 +9,7 @@ import {
 import { Account } from '../../../services/accounts/account';
 import { AccountsService } from '../../../services/accounts/accounts.service';
 import { CategoryService } from '../../../services/categories/categories.service';
-import {Category} from '../../../services/categories/category';
+import { Category } from '../../../services/categories/category';
 import { Expense } from '../../../services/expenses/expense';
 import { ExpensesService } from '../../../services/expenses/expenses.service';
 import { Option } from '../../../shared/components/dropdown-option-input/dropdown-option-input.component';
@@ -25,18 +25,18 @@ export class FormComponent implements OnInit {
     @Input() display: boolean = false;
     @Output() displayChange = new EventEmitter<boolean>();
 
-
     @Output() dataChange: EventEmitter<any> = new EventEmitter();
 
     selectedType: Option = { label: 'Ahorro', value: 'ahorro' };
     selectedAccount: Option = { label: '', value: '' };
-    selectedCategory: Option = {label: '', value: ''};
+    selectedCategory: Option = { label: '', value: '' };
 
     expenseTypeOptions: Option[] = [
         { label: 'Unico', value: 'unico' },
         { label: 'Mensual', value: 'mensual' },
     ];
 
+    date: Date = new Date(Date.now());
     expenseCategoryOptions: Option[] = [];
 
     expenseAccountOptions: Option[] = [];
@@ -59,9 +59,11 @@ export class FormComponent implements OnInit {
     setCategoriesOptions() {
         this.categoryService.list().subscribe((data) => {
             data.forEach((category: Category) => {
-                this.expenseCategoryOptions.push(new Option(category.name, category._id));
+                this.expenseCategoryOptions.push(
+                    new Option(category.name, category._id)
+                );
             });
-            console.log("Opciones: ",this.expenseCategoryOptions);
+            console.log('Opciones: ', this.expenseCategoryOptions);
         });
     }
 
@@ -79,29 +81,37 @@ export class FormComponent implements OnInit {
             let type = this.expenseTypeOptions.find(
                 (element) => element.label == expense.currentValue.type
             );
-            this.selectedType = {...type};
+            this.selectedType = { ...type };
             let account = this.expenseAccountOptions.find(
-                (element: Option) => element.label == expense.currentValue.account
+                (element: Option) =>
+                    element.label == expense.currentValue.account
             );
-            this.selectedAccount = {...account}
+            this.selectedAccount = { ...account };
             let category = this.expenseCategoryOptions.find(
-                ( element: Option ) => element.label == expense.currentValue.category            
+                (element: Option) =>
+                    element.label == expense.currentValue.category
             );
-            this.selectedCategory = {...category}; 
-            console.log("Cambios");
+            this.selectedCategory = { ...category };
+            console.log('Cambios');
+        } else {
+            this.selectedAccount = { label: '', value: '' };
+            this.selectedType = { label: '', value: '' };
+            this.selectedCategory = { label: '', value: '' };
         }
     }
 
     save() {
-        console.log(this.expense);
+        this.expense.date = this.date; 
         if (!this.expense._id) {
-            this.expenseService.create(this.expense).subscribe(()=>{ 
-               this.dataChanged(); 
+            this.expenseService.create(this.expense).subscribe(() => {
+                this.dataChanged();
             });
         } else {
-            this.expenseService.update(this.expense._id, this.expense).subscribe(()=>{ 
-               this.dataChanged(); 
-            });
+            this.expenseService
+                .update(this.expense._id, this.expense)
+                .subscribe(() => {
+                    this.dataChanged();
+                });
         }
         this.displayChange.emit(false);
     }

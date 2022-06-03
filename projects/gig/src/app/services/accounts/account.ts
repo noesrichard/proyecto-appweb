@@ -6,7 +6,7 @@ export const tableHeaders: Column[] = [
     { field: 'type', header: 'Tipo' , type: ColumnType.String},
     { field: 'name', header: 'Nombre' , type: ColumnType.String},
     { field: 'description', header: 'Descripcion' , type: ColumnType.String},
-    { field: 'expense', header: 'Gasto Total' , type: ColumnType.Money},
+    { field: 'expense', header: 'Balance' , type: ColumnType.Money},
 ];
 
 export class Account implements TableData {

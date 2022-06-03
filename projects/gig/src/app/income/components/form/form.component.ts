@@ -26,7 +26,7 @@ export class FormComponent implements OnInit {
 
     @Output() dataChange: EventEmitter<any> = new EventEmitter();
 
-    selectedType: Option = { label: 'Ahorro', value: 'ahorro' };
+    selectedType: Option = { label: '', value: '' };
     selectedAccount: Option = { label: '', value: '' };
 
     date: Date = new Date(Date.now()); 
@@ -62,8 +62,9 @@ export class FormComponent implements OnInit {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
+        let income = changes['income'];
+        console.log(income); 
         if (changes['income'] && changes['income'].currentValue._id) {
-            let income = changes['income'];
             let type = this.incomeTypeOptions.find(
                 (element) => element.label == income.currentValue.type
             );
@@ -76,6 +77,9 @@ export class FormComponent implements OnInit {
             if(income.currentValue.date){ 
                 this.date = income.currentValue.date; 
             }
+        }else{ 
+            this.selectedAccount = { label: '', value: '' }; 
+            this.selectedType = { label: '', value: '' };
         }
     }
 
