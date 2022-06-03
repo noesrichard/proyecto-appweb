@@ -6,6 +6,7 @@ import {
     EventEmitter,
     SimpleChanges,
 } from '@angular/core';
+import { MessageService } from 'primeng/api';
 import { CategoryService } from '../../../services/categories/categories.service';
 import { Category } from '../../../services/categories/category';
 import { Wish } from '../../../services/wishlist/wish';
@@ -39,7 +40,8 @@ export class FormComponent implements OnInit {
 
     constructor(
         private wishService: WishlistService,
-        private categoryService: CategoryService
+        private categoryService: CategoryService,
+        private messageService: MessageService
     ) {}
 
     ngOnInit(): void {
@@ -62,8 +64,8 @@ export class FormComponent implements OnInit {
         let wish = changes['wish'];
         console.log(wish);
         if (changes['wish'] && changes['wish'].currentValue._id) {
-            console.log("entra");
-            console.log(this.wishCategoryOptions); 
+            console.log('entra');
+            console.log(this.wishCategoryOptions);
             let category = this.wishCategoryOptions.find(
                 (element: Option) =>
                     element.label == wish.currentValue.category.name
@@ -78,17 +80,39 @@ export class FormComponent implements OnInit {
         this.displayChange.emit(false);
     }
 
+    checkData() {
+        if (
+            this.wish.description == '' ||
+            this.wish.category == '' ||
+            this.wish.total == 0
+        ) {
+            return false;
+        }
+        return true;
+    }
+
     save() {
-        if (!this.wish._id) {
-            this.wishService.create(this.wish).subscribe(() => {
-                this.dataChanged();
-            });
+        if (this.checkData()) {
+            if (!this.wish._id) {
+                this.wishService.create(this.wish).subscribe(() => {
+                    this.dataChanged();
+                });
+            } else {
+                this.wishService
+                    .update(this.wish._id, this.wish)
+                    .subscribe(() => {
+                        this.dataChanged();
+                    });
+            }
+            this.displayChange.emit(false);
         } else {
-            this.wishService.update(this.wish._id, this.wish).subscribe(() => {
-                this.dataChanged();
+            this.messageService.add({
+                severity: 'error',
+                summary: 'Formulario Incompleto',
+                detail: 'Debe completar el formulario',
+                life: 3000,
             });
         }
-        this.displayChange.emit(false);
     }
 
     setDescription(description: string) {

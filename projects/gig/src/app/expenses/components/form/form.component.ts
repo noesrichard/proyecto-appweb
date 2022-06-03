@@ -6,6 +6,7 @@ import {
     Output,
     SimpleChanges,
 } from '@angular/core';
+import { MessageService } from 'primeng/api';
 import { Account } from '../../../services/accounts/account';
 import { AccountsService } from '../../../services/accounts/accounts.service';
 import { CategoryService } from '../../../services/categories/categories.service';
@@ -44,7 +45,8 @@ export class FormComponent implements OnInit {
     constructor(
         private expenseService: ExpensesService,
         private categoryService: CategoryService,
-        private accountService: AccountsService
+        private accountService: AccountsService,
+        private messageService: MessageService
     ) {}
 
     dataChanged() {
@@ -94,8 +96,8 @@ export class FormComponent implements OnInit {
             this.selectedCategory = { ...category };
             console.log('Cambios');
 
-            if(expense.currentValue.date){ 
-                this.date = new Date(expense.currentValue.date); 
+            if (expense.currentValue.date) {
+                this.date = new Date(expense.currentValue.date);
             }
         } else {
             this.selectedAccount = { label: '', value: '' };
@@ -104,22 +106,44 @@ export class FormComponent implements OnInit {
         }
     }
 
+    checkData() {
+        if (
+            this.expense.account == '' ||
+            this.expense.type == '' ||
+            this.expense.description == '' ||
+            this.expense.total == 0 ||
+            this.expense.category == ''
+        ) {
+            return false;
+        }
+        return true;
+    }
+
     save() {
-        console.log(this.expense); 
-        this.expense.date = this.date; 
-        this.expense.dateString = this.date.toLocaleDateString();
-        if (!this.expense._id) {
-            this.expenseService.create(this.expense).subscribe(() => {
-                this.dataChanged();
-            });
-        } else {
-            this.expenseService
-                .update(this.expense._id, this.expense)
-                .subscribe(() => {
+        if (this.checkData()) {
+            console.log(this.expense);
+            this.expense.date = this.date;
+            this.expense.dateString = this.date.toLocaleDateString();
+            if (!this.expense._id) {
+                this.expenseService.create(this.expense).subscribe(() => {
                     this.dataChanged();
                 });
+            } else {
+                this.expenseService
+                    .update(this.expense._id, this.expense)
+                    .subscribe(() => {
+                        this.dataChanged();
+                    });
+            }
+            this.displayChange.emit(false);
+        } else {
+            this.messageService.add({
+                severity: 'error',
+                summary: 'Formulario Incompleto',
+                detail: 'Debe completar el formulario',
+                life: 3000,
+            });
         }
-        this.displayChange.emit(false);
     }
 
     setType(typeOption: any) {

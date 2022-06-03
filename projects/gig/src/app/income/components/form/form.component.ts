@@ -6,6 +6,7 @@ import {
     EventEmitter,
     SimpleChanges,
 } from '@angular/core';
+import {MessageService} from 'primeng/api';
 import { Account } from '../../../services/accounts/account';
 import { AccountsService } from '../../../services/accounts/accounts.service';
 import { Income } from '../../../services/income/income';
@@ -23,13 +24,12 @@ export class FormComponent implements OnInit {
     @Input() display: boolean = false;
     @Output() displayChange = new EventEmitter<boolean>();
 
-
     @Output() dataChange: EventEmitter<any> = new EventEmitter();
 
     selectedType: Option = { label: '', value: '' };
     selectedAccount: Option = { label: '', value: '' };
 
-    date: Date = new Date(Date.now()); 
+    date: Date = new Date(Date.now());
 
     incomeTypeOptions: Option[] = [
         { label: 'Unico', value: 'unico' },
@@ -42,7 +42,8 @@ export class FormComponent implements OnInit {
 
     constructor(
         private incomeService: IncomeService,
-        private accountService: AccountsService
+        private accountService: AccountsService,
+        private messageService: MessageService
     ) {}
 
     ngOnInit(): void {
@@ -63,42 +64,65 @@ export class FormComponent implements OnInit {
 
     ngOnChanges(changes: SimpleChanges): void {
         let income = changes['income'];
-        console.log(income); 
+        console.log(income);
         if (changes['income'] && changes['income'].currentValue._id) {
             let type = this.incomeTypeOptions.find(
                 (element) => element.label == income.currentValue.type
             );
-            this.selectedType = {...type};
+            this.selectedType = { ...type };
             let account = this.incomeAccountOptions.find(
-                (element: Option) => element.label == income.currentValue.account
+                (element: Option) =>
+                    element.label == income.currentValue.account
             );
-            this.selectedAccount = {...account}
+            this.selectedAccount = { ...account };
 
-            if(income.currentValue.date){ 
-                this.date = new Date(income.currentValue.date); 
+            if (income.currentValue.date) {
+                this.date = new Date(income.currentValue.date);
             }
-        }else{ 
-            this.selectedAccount = { label: '', value: '' }; 
+        } else {
+            this.selectedAccount = { label: '', value: '' };
             this.selectedType = { label: '', value: '' };
         }
     }
 
-    save() {
-        this.income.date = this.date; 
-        this.income.dateString = this.date.toLocaleDateString();
-        console.log("Ingreso ",this.income); 
-        if (!this.income._id) {
-            this.incomeService.create(this.income).subscribe(()=>{ 
-               this.dataChanged(); 
-            });
-        } else {
-            this.incomeService.update(this.income._id, this.income).subscribe(()=>{ 
-               this.dataChanged(); 
-            });
+    checkData() {
+        if (
+            this.income.account == '' ||
+            this.income.type == '' ||
+            this.income.description == '' ||
+            this.income.total == 0
+        ) {
+            return false;
         }
-        this.displayChange.emit(false);
+        return true;
     }
 
+    save() {
+        if (this.checkData()) {
+            this.income.date = this.date;
+            this.income.dateString = this.date.toLocaleDateString();
+            console.log('Ingreso ', this.income);
+            if (!this.income._id) {
+                this.incomeService.create(this.income).subscribe(() => {
+                    this.dataChanged();
+                });
+            } else {
+                this.incomeService
+                    .update(this.income._id, this.income)
+                    .subscribe(() => {
+                        this.dataChanged();
+                    });
+            }
+            this.displayChange.emit(false);
+        } else {
+            this.messageService.add({
+                severity: 'error',
+                summary: 'Formulario Incompleto',
+                detail: 'Debe completar el formulario',
+                life: 3000,
+            });
+        }
+    }
 
     setType(typeOption: any) {
         this.income.type = typeOption.label;

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MessageService } from 'primeng/api';
 import { CategoryService } from '../../../services/categories/categories.service';
-import {Category} from '../../../services/categories/category';
+import { Category } from '../../../services/categories/category';
 
 @Component({
     selector: 'gig-form',
@@ -15,7 +16,10 @@ export class FormComponent implements OnInit {
 
     @Output() dataChange: EventEmitter<any> = new EventEmitter();
 
-    constructor(private categoryService: CategoryService) {}
+    constructor(
+        private categoryService: CategoryService,
+        private messageService: MessageService
+    ) {}
 
     ngOnInit(): void {}
 
@@ -23,15 +27,33 @@ export class FormComponent implements OnInit {
         this.dataChange.emit(true);
     }
 
-    save() {
-        if (!this.category._id) {
-            this.categoryService.create(this.category).subscribe(()=>{ 
-               this.dataChanged(); 
-            });
-        } else {
-            this.categoryService.update(this.category._id, this.category).subscribe();
+    checkData() {
+        if (this.category.name == '' || this.category.description == '') {
+            return false;
         }
-        this.displayChange.emit(false);
+        return true;
+    }
+
+    save() {
+        if (this.checkData()) {
+            if (!this.category._id) {
+                this.categoryService.create(this.category).subscribe(() => {
+                    this.dataChanged();
+                });
+            } else {
+                this.categoryService
+                    .update(this.category._id, this.category)
+                    .subscribe();
+            }
+            this.displayChange.emit(false);
+        } else {
+            this.messageService.add({
+                severity: 'error',
+                summary: 'Formulario Incompleto',
+                detail: 'Debe completar el formulario',
+                life: 3000,
+            });
+        }
     }
 
     setName(name: string) {

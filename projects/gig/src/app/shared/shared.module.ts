@@ -41,6 +41,8 @@ import { TextInputComponent } from './components/text-input/text-input.component
 import { DropdownOptionInputComponent } from './components/dropdown-option-input/dropdown-option-input.component';
 import { CreateDialogComponent } from './components/create-dialog/create-dialog.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
     declarations: [
         ContainerComponent,
@@ -80,6 +82,7 @@ import { CreateDialogComponent } from './components/create-dialog/create-dialog.
         ConfirmDialogModule,
         InputTextareaModule,
         TabViewModule,
+        ReactiveFormsModule,
     ],
     exports: [
         ContainerComponent,
@@ -117,6 +120,7 @@ import { CreateDialogComponent } from './components/create-dialog/create-dialog.
         ConfirmDialogModule,
         InputTextareaModule,
         TabViewModule,
+        ReactiveFormsModule,
     ],
     providers: [MessageService, ConfirmationService],
 })

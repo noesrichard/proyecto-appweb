@@ -5,6 +5,7 @@
         title="Tipo de Cuenta"
         [selected]="selected"
         (optionChange)="setType($event)"
+        required
     ></gig-dropdown-option-input>
 
     <gig-text-input
@@ -12,6 +13,7 @@
         id="name"
         [selected]="account?.name"
         (onDataChanged)="setName($event)"
+        required
     ></gig-text-input>
 
     <gig-text-input
@@ -19,6 +21,7 @@
         id="description"
         [selected]="account?.description"
         (onDataChanged)="setDescription($event)"
+        required
     ></gig-text-input>
 </div>
 <!--Botones-->

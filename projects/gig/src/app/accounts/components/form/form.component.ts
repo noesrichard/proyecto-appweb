@@ -10,6 +10,8 @@ import {
 import { Account } from '../../../services/accounts/account';
 import { AccountsService } from '../../../services/accounts/accounts.service';
 import { Option } from '../../../shared/components/dropdown-option-input/dropdown-option-input.component';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {MessageService} from 'primeng/api';
 
 @Component({
     selector: 'gig-form',
@@ -26,13 +28,15 @@ export class FormComponent implements OnInit, OnChanges {
 
     selected: Option = { label: 'Ahorro', value: 'ahorro' };
 
+    group!: FormGroup;
+
     accountTypeOptions: Option[] = [
         { label: 'Ahorro', value: 'ahorro' },
         { label: 'Crédito', value: 'credito' },
         { label: 'Efectivo', value: 'efectivo' },
     ];
 
-    constructor(private accountService: AccountsService) {}
+    constructor(private accountService: AccountsService, private messageService: MessageService) {}
 
     ngOnInit(): void {}
 
@@ -50,19 +54,39 @@ export class FormComponent implements OnInit, OnChanges {
         this.dataChange.emit(true);
     }
 
+    checkData() {
+        if (
+            this.account.name == '' ||
+            this.account.type == '' ||
+            this.account.description == ''
+        ) {
+            return false;
+        }
+        return true;
+    }
+
     save() {
-        if (!this.account._id) {
-            this.accountService.create(this.account).subscribe(() => {
-                this.dataChanged();
-            });
-        } else {
-            this.accountService
-                .update(this.account._id, this.account)
-                .subscribe(() => {
+        if (this.checkData()) {
+            if (!this.account._id) {
+                this.accountService.create(this.account).subscribe(() => {
                     this.dataChanged();
                 });
+            } else {
+                this.accountService
+                    .update(this.account._id, this.account)
+                    .subscribe(() => {
+                        this.dataChanged();
+                    });
+            }
+            this.displayChange.emit(false);
+        } else {
+            this.messageService.add({
+                severity: 'error',
+                summary: 'Formulario Incompleto',
+                detail: 'Debe completar el formulario',
+                life: 3000,
+            });
         }
-        this.displayChange.emit(false);
     }
 
     setName(name: string) {
