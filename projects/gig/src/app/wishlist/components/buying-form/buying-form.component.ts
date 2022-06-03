@@ -13,6 +13,7 @@ import { ExpensesService } from '../../../services/expenses/expenses.service';
 import { Wish } from '../../../services/wishlist/wish';
 import { WishlistService } from '../../../services/wishlist/wishlist.service';
 import { Option } from '../../../shared/components/dropdown-option-input/dropdown-option-input.component';
+import { Category } from '../../../services/categories/category';
 
 @Component({
     selector: 'gig-buying-form',
@@ -31,6 +32,7 @@ export class BuyingFormComponent implements OnInit {
     selectedAccount: Option = { label: '', value: '' };
 
     date: Date = new Date(Date.now());
+    expenseAccount: string = '';
 
     wishAccountOptions: Option[] = [];
 
@@ -63,8 +65,7 @@ export class BuyingFormComponent implements OnInit {
             console.log('entra');
             console.log(this.wishAccountOptions);
             let account = this.wishAccountOptions.find(
-                (element: Option) =>
-                    element.label == wish.currentValue.account.name
+                (element: Option) => element.label == wish.currentValue.account
             );
             this.selectedAccount = { ...account };
         } else {
@@ -77,26 +78,26 @@ export class BuyingFormComponent implements OnInit {
     }
 
     save() {
-        if (!this.wish._id && !this.selectedAccount) {
-            let expense = new Expense(
-                'Unico',
-                this.wish.description,
-                this.wish.category,
-                this.date,
-                this.selectedAccount,
-                this.wish.total
-            );
-            expense.dateString = this.date.toLocaleDateString();
-            this.expenseService.create(expense).subscribe(() => {
+        let category = this.wish.category as unknown as Category;
+        let expense = new Expense(
+            'Unico',
+            this.wish.description,
+            category._id,
+            this.date,
+            this.expenseAccount,
+            this.wish.total
+        );
+        expense.dateString = this.date.toLocaleDateString();
+        console.log(expense);
+        this.expenseService.create(expense).subscribe(() => {
+            this.wishService.delete(this.wish._id).subscribe(() => {
                 this.dataChanged();
-                this.wishService.delete(this.wish._id);
             });
-        } else {
-        }
+        });
         this.displayBuyingChange.emit(false);
     }
 
     setAccount(accountOption: any) {
-        //this.wish.account = accountOption.value;
+        this.expenseAccount = accountOption.value;
     }
 }

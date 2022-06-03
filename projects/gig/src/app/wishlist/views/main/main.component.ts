@@ -47,6 +47,7 @@ export class MainComponent implements OnInit {
     }
 
     onNewExpense(wish: Wish){ 
+        this.wish = wish; 
         this.displayBuying = true; 
     }
 

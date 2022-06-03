@@ -105,6 +105,7 @@ export class FormComponent implements OnInit {
     }
 
     save() {
+        console.log(this.expense); 
         this.expense.date = this.date; 
         this.expense.dateString = this.date.toLocaleDateString();
         if (!this.expense._id) {

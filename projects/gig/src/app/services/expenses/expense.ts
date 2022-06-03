@@ -16,18 +16,18 @@ export class Expense implements TableData {
     _id?: string;
     type: string;
     description: string;
-    category: any;
+    category?: any;
     date?: Date;
     dateString?: string; 
-    account: any;
+    account: any ;
     total: number;
 
     constructor(
         type: string,
         description: string,
-        category: string,
+        category: any,
         date: Date,
-        account: string,
+        account: any,
         total: number
     ) {
         this.description = description;
