@@ -93,6 +93,10 @@ export class FormComponent implements OnInit {
             );
             this.selectedCategory = { ...category };
             console.log('Cambios');
+
+            if(expense.currentValue.date){ 
+                this.date = new Date(expense.currentValue.date); 
+            }
         } else {
             this.selectedAccount = { label: '', value: '' };
             this.selectedType = { label: '', value: '' };
@@ -102,6 +106,7 @@ export class FormComponent implements OnInit {
 
     save() {
         this.expense.date = this.date; 
+        this.expense.dateString = this.date.toLocaleDateString();
         if (!this.expense._id) {
             this.expenseService.create(this.expense).subscribe(() => {
                 this.dataChanged();

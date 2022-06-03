@@ -19,11 +19,12 @@ export class TableComponent<T extends TableData> implements OnInit {
     @Output() onEdit: EventEmitter<T> = new EventEmitter<T>();  
     @Output() onDelete: EventEmitter<T> = new EventEmitter<T>();  
 
+    date: string = ''; 
+
     stringData = ColumnType.String; 
     moneyData = ColumnType.Money; 
     dateData = ColumnType.Date; 
     objectData = ColumnType.Object; 
-    
 
     constructor() {}
 

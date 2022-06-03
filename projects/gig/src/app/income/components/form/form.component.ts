@@ -75,7 +75,7 @@ export class FormComponent implements OnInit {
             this.selectedAccount = {...account}
 
             if(income.currentValue.date){ 
-                this.date = income.currentValue.date; 
+                this.date = new Date(income.currentValue.date); 
             }
         }else{ 
             this.selectedAccount = { label: '', value: '' }; 
@@ -85,7 +85,8 @@ export class FormComponent implements OnInit {
 
     save() {
         this.income.date = this.date; 
-        console.log(this.income);
+        this.income.dateString = this.date.toLocaleDateString();
+        console.log("Ingreso ",this.income); 
         if (!this.income._id) {
             this.incomeService.create(this.income).subscribe(()=>{ 
                this.dataChanged(); 
@@ -97,6 +98,7 @@ export class FormComponent implements OnInit {
         }
         this.displayChange.emit(false);
     }
+
 
     setType(typeOption: any) {
         this.income.type = typeOption.label;
