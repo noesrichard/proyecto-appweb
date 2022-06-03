@@ -29,6 +29,8 @@ export class FormComponent implements OnInit {
     selectedType: Option = { label: 'Ahorro', value: 'ahorro' };
     selectedAccount: Option = { label: '', value: '' };
 
+    date: Date = new Date(Date.now()); 
+
     incomeTypeOptions: Option[] = [
         { label: 'Unico', value: 'unico' },
         { label: 'Mensual', value: 'mensual' },
@@ -70,10 +72,15 @@ export class FormComponent implements OnInit {
                 (element: Option) => element.label == income.currentValue.account
             );
             this.selectedAccount = {...account}
+
+            if(income.currentValue.date){ 
+                this.date = income.currentValue.date; 
+            }
         }
     }
 
     save() {
+        this.income.date = this.date; 
         console.log(this.income);
         if (!this.income._id) {
             this.incomeService.create(this.income).subscribe(()=>{ 

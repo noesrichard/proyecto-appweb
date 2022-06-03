@@ -28,8 +28,15 @@
         (onDataChanged)="setTotal($event)"
     ></gig-text-input>
 
-
-    
+    <div class="field col-12 md:col-4">
+        <label for="icon">Fecha</label>
+        <p-calendar
+            [(ngModel)]="date"
+            [showIcon]="true"
+            appendTo="body"
+            inputId="icon"
+        ></p-calendar>
+    </div>
 </div>
 <!--Botones-->
 <div class="button-container">

@@ -17,7 +17,7 @@ export class MainComponent implements OnInit {
 
     display: boolean = false;
 
-    income: Income = new Income( '', '', new Date(Date.now()), '', 0);
+    income: Income = new Income( '', '', '', 0);
 
     constructor(
         private incomeService: IncomeService,
@@ -39,7 +39,7 @@ export class MainComponent implements OnInit {
 
     onNew() {
         this.display = true;
-        this.income = new Income( '', '', new Date(Date.now()), '', 0);
+        this.income = new Income( '', '',  '', 0);
         this.title = 'Nuevo Ingreso';
     }
 

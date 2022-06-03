@@ -14,20 +14,18 @@ export class Income implements TableData {
     _id?: string;
     type: string;
     description: string;
-    date: Date;
+    date?: Date;
     account: any;
     total: number;
 
     constructor(
         type: string,
         description: string,
-        date: Date,
         account: string,
         total: number
     ) {
         this.description = description;
         this.type = type;
-        this.date = date;
         this.account = account;
         this.total = total;
     }

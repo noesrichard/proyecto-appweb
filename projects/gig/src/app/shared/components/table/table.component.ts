@@ -31,13 +31,13 @@ export class TableComponent<T extends TableData> implements OnInit {
     }
 
     deleteRow(element: T): void{ 
-        this.onDelete.emit(element)
+        this.onDelete.emit({ ...element })
     }
 
 
     editRow(element: T): void{ 
         console.log(element);
-        this.onEdit.emit(element);
+        this.onEdit.emit({ ...element });
     }
    
 }
