@@ -9,10 +9,12 @@ import { Account } from './account';
 export class AccountsService {
     url: string = '/api/accounts/';
 
+    userid?: any = sessionStorage.getItem("userid"); 
+
     constructor(private http: HttpClient) {}
 
     list(): Observable<any> {
-        return this.http.get(this.url);
+        return this.http.get(this.url+this.userid);
     }
 
     findById(id: any): Observable<any> {
@@ -20,6 +22,7 @@ export class AccountsService {
     }
 
     create(account: Account) {
+        console.log(account); 
         return this.http.post(this.url, account);
     }
 

@@ -9,6 +9,7 @@ export const tableHeaders: Column[] = [
 ];
 
 export class Wish implements TableData {
+    userid?: any = sessionStorage.getItem("userid"); 
     _id?: string;
     description: string;
     category: string;

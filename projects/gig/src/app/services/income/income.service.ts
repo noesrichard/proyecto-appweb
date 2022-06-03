@@ -9,11 +9,13 @@ import { Observable } from 'rxjs';
 export class IncomeService{
 
     url: string = '/api/income/';
+    userid?: any = sessionStorage.getItem("userid"); 
 
     constructor(private http: HttpClient) {}
 
+
     list(): Observable<any> {
-        return this.http.get(this.url);
+        return this.http.get(this.url+this.userid);
     }
 
     findById(id: any): Observable<any> {

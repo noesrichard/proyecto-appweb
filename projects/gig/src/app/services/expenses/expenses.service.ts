@@ -10,10 +10,12 @@ export class ExpensesService{
 
     url: string = '/api/expenses/';
 
+    userid?: any = sessionStorage.getItem("userid"); 
+
     constructor(private http: HttpClient) {}
 
     list(): Observable<any> {
-        return this.http.get(this.url);
+        return this.http.get(this.url+this.userid);
     }
 
     findById(id: any): Observable<any> {

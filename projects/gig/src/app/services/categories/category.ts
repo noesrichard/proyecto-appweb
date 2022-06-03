@@ -9,6 +9,7 @@ export const tableHeaders: Column[] = [
 ];
 
 export class Category implements TableData {
+    userid?: any = sessionStorage.getItem("userid"); 
     _id?: string;
     name: string;
     description: string;

@@ -13,6 +13,8 @@
         [strongLabel]="strong"
         [promptLabel]="passwordPrompt"
         [showPassword]="showPassword"
+        [(ngModel)]="password"
+        (keyup)="sendData()"
         #passwdInput
     />
     <label for="passwd-input">Contraseña</label>

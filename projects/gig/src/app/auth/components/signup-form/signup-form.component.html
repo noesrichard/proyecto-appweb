@@ -10,16 +10,16 @@
             </h4>
         </div>
         <div class="login__username-input">
-            <gig-user-input></gig-user-input>
+            <gig-user-input (onDataChanged)="setUsername($event)"></gig-user-input>
         </div>
 
         <div class="login__passwd-input">
-            <gig-passwd-input></gig-passwd-input>
+            <gig-passwd-input (onDataChanged)="setPassword($event)"></gig-passwd-input>
         </div>
 
         <div class="login__passwd-input">
             <span class="p-float-label p-input-icon-right">
-                <input pInputText id="float-input" type="password" />
+                <input pInputText id="float-input" type="password" [(ngModel)]="repeteadPassword"/>
                 <label for="float-input">Repita la contraseña</label>
             </span>
         </div>
@@ -28,6 +28,7 @@
             class="login__btn p-button-success"
             type="button"
             label="Regístrate"
+            (click)="save()"
         ></button>
         <p class="login__signup-text">
             Inicia sesión

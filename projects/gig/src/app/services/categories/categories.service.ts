@@ -11,8 +11,10 @@ export class CategoryService{
 
     constructor(private http: HttpClient) {}
 
+    userid?: any = sessionStorage.getItem("userid"); 
+
     list(): Observable<any> {
-        return this.http.get(this.url);
+        return this.http.get(this.url+this.userid);
     }
 
     findById(id: any): Observable<any> {

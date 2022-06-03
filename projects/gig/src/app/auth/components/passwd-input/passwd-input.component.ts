@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
@@ -7,6 +7,12 @@ import { PrimeNGConfig } from 'primeng/api';
     styleUrls: ['./passwd-input.component.css'],
 })
 export class PasswdInputComponent implements OnInit {
+
+    @Output() onDataChanged: EventEmitter<any> = new EventEmitter<any>(); 
+
+    @Input() password?: any; 
+
+
     weak = 'Fácil';
     medium = 'Media';
     strong = 'Difícil';
@@ -14,6 +20,7 @@ export class PasswdInputComponent implements OnInit {
     passwordPrompt = 'Ingrese una contraseña';
     showPassword = false;
     constructor(private primengConfig: PrimeNGConfig) {}
+
 
     ngOnInit(): void {
         this.primengConfig.setTranslation({
@@ -31,5 +38,9 @@ export class PasswdInputComponent implements OnInit {
             this.icon = 'pi pi-eye';
         }
         
+    }
+
+    sendData(){ 
+        this.onDataChanged.emit(this.password); 
     }
 }

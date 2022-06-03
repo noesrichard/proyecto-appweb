@@ -13,6 +13,7 @@ export const tableHeaders: Column[] = [
 ];
 
 export class Expense implements TableData {
+    userid?: any = sessionStorage.getItem("userid"); 
     _id?: string;
     type: string;
     description: string;

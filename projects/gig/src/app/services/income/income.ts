@@ -12,6 +12,7 @@ export const tableHeaders: Column[] = [
 ];
 
 export class Income implements TableData {
+    userid?: any = sessionStorage.getItem("userid"); 
     _id?: string;
     type: string;
     description: string;

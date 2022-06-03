@@ -1,5 +1,7 @@
 <span class="p-float-label p-input-icon-right">
-    <input id="float-input" type="text" pInputText />
+    <input id="float-input" type="text" pInputText 
+    [(ngModel)]="username"
+    (keyup)="sendData()"/>
     <label for="float-input">Correo</label>
     <i class="pi pi-user"></i>
 </span>
