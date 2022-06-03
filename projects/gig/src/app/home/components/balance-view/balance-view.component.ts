@@ -22,6 +22,8 @@ export class BalanceViewComponent implements OnInit {
     categories: Category[] = [];
     accounts: Account[] = [];
 
+    accountsOptions = {}; 
+
     constructor(
         private categoryService: CategoryService,
         private accountsService: AccountsService
@@ -65,5 +67,13 @@ export class BalanceViewComponent implements OnInit {
                 ],
             };
         });
+
+        this.accountsOptions = {
+            plugins: {
+                legend: {
+                   display: false 
+                },
+            },
+        };
     }
 }
