@@ -1,0 +1,53 @@
+<p-table [value]="data">
+    <ng-template pTemplate="header">
+        <tr>
+            <th *ngFor="let column of columns">
+                {{ column.header }}
+            </th>
+            <th></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-data>
+        <tr>
+            <td *ngFor="let column of columns">
+                <span *ngIf="column.type == stringData">
+                    {{ data[column.field] }}
+                </span>
+                <span *ngIf="column.type == moneyData">
+                    ${{ data[column.field] }}
+                </span>
+                <span *ngIf="column.type == objectData">
+                    {{ data[column.field]["name"] }}
+                </span>
+                <span *ngIf="column.type == dateData">
+                    {{ data[column.field] }}
+                </span>
+            </td>
+            <td>
+                <div class="buttons-container">
+                    <button
+                        pButton
+                        pRipple
+                        icon="pi pi-pencil"
+                        class="p-button-rounded mr-2"
+                        (click)="editRow(data)"
+                    ></button>
+                    <button
+                        pButton
+                        pRipple
+                        icon="pi pi-shopping-cart"
+                        class="p-button-rounded p-button-info"
+                        (click)="createExpense(data)"
+                    ></button>
+                    <button
+                        pButton
+                        pRipple
+                        icon="pi pi-trash"
+                        class="p-button-rounded p-button-warning"
+                        (click)="deleteRow(data)"
+                    ></button>
+                </div>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

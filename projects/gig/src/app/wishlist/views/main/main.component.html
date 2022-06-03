@@ -1,0 +1,37 @@
+<gig-container>
+    <p-toast position="bottom-center"></p-toast>
+    <p-tabView>
+        <p-tabPanel header="Vista de  Tabla">
+            <div class="btn-new">
+                <button (click)="onNew()" pButton>Nuevo Ingreso</button>
+            </div>
+
+            <gig-create-dialog [(display)]="display" [title]="title">
+                <gig-form [display]="display" (displayChange)="hideForm()" (dataChange)="listWish()"
+                    [wish]="wish"></gig-form>
+            </gig-create-dialog>
+
+            <gig-create-dialog [(display)]="displayBuying" [title]="title">
+                <gig-buying-form [displayBuying]="displayBuying" (displayBuyingChange)="hideForm()" (dataChange)="listWish()"
+                    [wish]="wish"></gig-buying-form>
+            </gig-create-dialog>
+
+
+            <gig-wishtable
+                [columns]="wishHeaders"
+                [data]="wishs"
+                (onEdit)="onEdit($event)"
+                (onDelete)="onDelete($event)"
+                (onNewExpense)="onNewExpense($event)"
+            >
+            </gig-wishtable>
+
+            <p-confirmDialog
+                header="Confirmation"
+                icon="pi pi-exclamation-triangle"
+                acceptLabel="Sí"
+            ></p-confirmDialog>
+        </p-tabPanel>
+        <p-tabPanel header="Informacion"> </p-tabPanel>
+    </p-tabView>
+</gig-container>

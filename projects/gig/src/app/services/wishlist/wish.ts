@@ -4,7 +4,7 @@ import { ColumnType } from '../shared/columntypes';
 
 export const tableHeaders: Column[] = [
     { field: 'description', header: 'Descripcion', type: ColumnType.String},
-    { field: 'category', header: 'Categoria', type: ColumnType.String},
+    { field: 'category', header: 'Categoria', type: ColumnType.Object},
     { field: 'total', header: 'Precio' , type: ColumnType.Money},
 ];
 

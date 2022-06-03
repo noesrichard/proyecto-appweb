@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {TableViewComponent} from './components/table-view/table-view.component';
+import { MainComponent } from './views/main/main.component';
 
-const routes: Routes = [
-    {path: '', component: TableViewComponent}
-];
+const routes: Routes = [{ path: '', component: MainComponent }];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule],
 })
-export class WishlistRoutingModule { }
+export class WishlistRoutingModule {}

@@ -1,0 +1,30 @@
+<!--Formulario-->
+<div class="form-conatiner">
+    <gig-dropdown-option-input
+        [options]="wishAccountOptions"
+        title="Cuenta"
+        [selected]="selectedAccount"
+        (optionChange)="setAccount($event)"
+    ></gig-dropdown-option-input>
+
+    <div class="field col-12 md:col-4">
+        <label for="icon">Fecha</label>
+        <p-calendar
+            [(ngModel)]="date"
+            [showIcon]="true"
+            [defaultDate]="date"
+            appendTo="body"
+            inputId="icon"
+        ></p-calendar>
+    </div>
+</div>
+<!--Botones-->
+<div class="button-container">
+    <p-button
+        icon="pi pi-times"
+        (click)="hideForm()"
+        label="Cancelar"
+        styleClass="p-button-text"
+    ></p-button>
+    <p-button icon="pi pi-check" (click)="save()" label="Guardar"></p-button>
+</div>

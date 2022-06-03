@@ -1,0 +1,34 @@
+<!--Formulario-->
+<div class="form-conatiner">
+    <gig-text-input
+        text="Descripción"
+        id="description"
+        [selected]="wish?.description"
+        (onDataChanged)="setDescription($event)"
+    ></gig-text-input>
+
+    <gig-dropdown-option-input
+        [options]="wishCategoryOptions"
+        title="Cuenta"
+        [selected]="selectedCategory"
+        (optionChange)="setCategory($event)"
+    ></gig-dropdown-option-input>
+
+    <gig-text-input
+        text="Precio"
+        id="total"
+        [selected]="wish?.total"
+        (onDataChanged)="setTotal($event)"
+    ></gig-text-input>
+
+</div>
+<!--Botones-->
+<div class="button-container">
+    <p-button
+        icon="pi pi-times"
+        (click)="hideForm()"
+        label="Cancelar"
+        styleClass="p-button-text"
+    ></p-button>
+    <p-button icon="pi pi-check" (click)="save()" label="Guardar"></p-button>
+</div>
