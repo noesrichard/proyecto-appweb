@@ -15,7 +15,7 @@ export class MainComponent implements OnInit {
     wishs: Wish[] = [];
     wishHeaders: Column[];
 
-    title: string = 'Nuevo Ingreso';
+    title: string = 'Nuevo Deseo';
 
     display: boolean = false;
     displayBuying: boolean = false;
@@ -43,7 +43,7 @@ export class MainComponent implements OnInit {
     onNew() {
         this.display = true;
         this.wish = new Wish( '', '', 0);
-        this.title = 'Nuevo Ingreso';
+        this.title = 'Nuevo Deseo';
     }
 
     onNewExpense(wish: Wish){ 
@@ -54,7 +54,7 @@ export class MainComponent implements OnInit {
     onEdit(wish: Wish) {
         this.wish = wish;
         this.display = true;
-        this.title = 'Editao Ingreso';
+        this.title = 'Editar Deseo';
     }
 
     onDelete(wish: Wish) {

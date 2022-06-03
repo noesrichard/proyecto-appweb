@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
         this.navbarItems = [ 
             {label: 'Inicio', icon: 'pi pi-fw pi-home', routerLink: ['/balance']},
             {label: 'Cuentas', icon: 'pi pi-fw pi-credit-card', routerLink: ['/accounts']},
-            {label: 'Categorias', icon: 'pi pi-fw pi-align-center', routerLink: ['/categories']},
+            {label: 'Categorías', icon: 'pi pi-fw pi-align-center', routerLink: ['/categories']},
             {label: 'Ingresos', icon: 'pi pi-fw pi-arrow-circle-up', routerLink: ['/income']},
             {label: 'Gastos', icon: 'pi pi-fw pi-arrow-circle-down', routerLink: ['/expenses']},
             {label: 'WishList', icon: 'pi pi-fw pi-shopping-cart', routerLink: ['/wishlist']},

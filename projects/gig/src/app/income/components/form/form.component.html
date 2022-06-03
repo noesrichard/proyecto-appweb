@@ -2,7 +2,7 @@
 <div class="form-conatiner">
     <gig-dropdown-option-input
         [options]="incomeTypeOptions"
-        title="Tipo de Gasto"
+        title="Tipo de Ingreso"
         [selected]="selectedType"
         (optionChange)="setType($event)"
     ></gig-dropdown-option-input>
@@ -22,7 +22,7 @@
     ></gig-dropdown-option-input>
 
     <gig-text-input
-        text="Gasto"
+        text="Ingreso Total"
         id="total"
         [selected]="income?.total"
         (onDataChanged)="setTotal($event)"

@@ -12,7 +12,6 @@ export class UserBubbleComponent implements OnInit {
 
     ngOnInit(): void {
         this.menuItems = [
-            { label: 'Configuración', icon: 'pi pi-fw pi-cog' },
             { label: 'Salir', icon: 'pi pi-fw pi-sign-out' },
         ];
     }

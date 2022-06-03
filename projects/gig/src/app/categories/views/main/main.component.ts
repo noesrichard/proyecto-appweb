@@ -13,7 +13,7 @@ export class MainComponent implements OnInit {
     categorys: Category[] = [];
     categoryHeaders:  Column[];
 
-    title: string = 'Nueva Categoria';
+    title: string = 'Nueva Categoría';
 
     display: boolean = false;
 
@@ -39,13 +39,13 @@ export class MainComponent implements OnInit {
     onNew() {
         this.display = true;
         this.category = new Category( '', '', 0);
-        this.title = 'Nueva Categoria';
+        this.title = 'Nueva Categoría';
     }
 
     onEdit(category: Category) {
         this.category = category;
         this.display = true;
-        this.title = 'Editar Categoria';
+        this.title = 'Editar Categoría';
     }
 
     onDelete(category: Category) {
