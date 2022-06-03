@@ -17,7 +17,7 @@ export class MainComponent implements OnInit {
 
     display: boolean = false;
 
-    account: Account = new Account( '', '', '', 0);
+    account: Account = new Account('', '', '', 0);
 
     constructor(
         private accountService: AccountsService,
@@ -28,19 +28,22 @@ export class MainComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.listAccounts();
+        this.listAccounts(); 
     }
 
-    listAccounts(){ 
-        this.accountService.list().subscribe(data => { 
-            this.accounts = data; 
-        })
+    listAccounts() {
+        this.accountService.list().subscribe((data) => {
+            this.accounts = data;
+        });
     }
 
+    newAccount(account: Account) {
+        this.accounts.push(account);
+    }
 
     onNew() {
         this.display = true;
-        this.account = new Account( '', '', '', 0);
+        this.account = new Account('', '', '', 0);
         this.title = 'Nueva Cuenta';
     }
 
@@ -52,16 +55,16 @@ export class MainComponent implements OnInit {
 
     onDelete(account: Account) {
         console.log(this.accounts);
-        console.log("cuenta seleccionada", account);
+        console.log('cuenta seleccionada', account);
         let id = account._id;
         this.confirmationService.confirm({
             message: '¿Seguro de eliminar el producto seleccionado?',
             header: 'Confirmación',
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
-                this.accountService.delete(id).subscribe(
-                    () => { this.listAccounts() }
-                );
+                this.accountService.delete(id).subscribe(() => {
+                    this.listAccounts();
+                });
                 console.log(id);
                 this.messageService.add({
                     severity: 'success',

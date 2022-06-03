@@ -24,7 +24,8 @@ export class FormComponent implements OnInit, OnChanges {
     @Input() display: boolean = false;
     @Output() displayChange = new EventEmitter<boolean>();
 
-    @Output() dataChange: EventEmitter<any> = new EventEmitter();
+    @Output() newData: EventEmitter<any> = new EventEmitter();
+    @Output() editData: EventEmitter<any> = new EventEmitter();
 
     selected: Option = { label: 'Ahorro', value: 'ahorro' };
 
@@ -50,8 +51,12 @@ export class FormComponent implements OnInit, OnChanges {
         }
     }
 
-    dataChanged() {
-        this.dataChange.emit(true);
+    newDataEvent() {
+        this.newData.emit(this.account);
+    }
+
+    editDataEvent(){ 
+        this.editData.emit(this.account); 
     }
 
     checkData() {
@@ -69,13 +74,13 @@ export class FormComponent implements OnInit, OnChanges {
         if (this.checkData()) {
             if (!this.account._id) {
                 this.accountService.create(this.account).subscribe(() => {
-                    this.dataChanged();
+                    this.newDataEvent();
                 });
             } else {
                 this.accountService
                     .update(this.account._id, this.account)
                     .subscribe(() => {
-                        this.dataChanged();
+                        this.editDataEvent();
                     });
             }
             this.displayChange.emit(false);

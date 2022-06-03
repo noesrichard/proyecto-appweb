@@ -8,7 +8,7 @@
 
             <gig-create-dialog [(display)]="display" [title]="title">
                 <gig-form [display]="display" (displayChange)="hideForm()" 
-                    [account]="account"(dataChange)="listAccounts()"></gig-form>
+                    [account]="account"(newData)="newAccount($event)" (editData)="listAccounts()"></gig-form>
             </gig-create-dialog>
 
             <gig-table
